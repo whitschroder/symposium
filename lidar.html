@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>LiDAR &#8212; Resilience and Heritage</title>
+    <title>Analyzing and Visualizing Lidar Data &#8212; Resilience and Heritage</title>
   
   
   
@@ -60,8 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'lidar';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Point Cloud" href="pointcloud.html" />
-    <link rel="prev" title="Software" href="software.html" />
+    <link rel="next" title="Documenting Built Heritage" href="heritage.html" />
+    <link rel="prev" title="Where to Access Lidar Data" href="pointcloud.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -177,10 +177,10 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="software.html">Software</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">LiDAR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pointcloud.html">Point Cloud</a></li>
-<li class="toctree-l1"><a class="reference internal" href="heritage.html">Heritage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">Software for Lidar Visualization and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pointcloud.html">Where to Access Lidar Data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analyzing and Visualizing Lidar Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heritage.html">Documenting Built Heritage</a></li>
 </ul>
 
     </div>
@@ -364,7 +364,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>LiDAR</h1>
+    <h1>Analyzing and Visualizing Lidar Data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -378,9 +378,108 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lidar">
-<h1>LiDAR<a class="headerlink" href="#lidar" title="Link to this heading">#</a></h1>
-<div class="sketchfab-embed-wrapper"> <iframe title="Cedar Key, Florida" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/b4a408d1624b4870ac8a77a1405ba1d4/embed" width=50%> </iframe> <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> <a href="https://sketchfab.com/3d-models/cedar-key-florida-b4a408d1624b4870ac8a77a1405ba1d4?utm_medium=embed&utm_campaign=share-popup&utm_content=b4a408d1624b4870ac8a77a1405ba1d4" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> Cedar Key, Florida </a> by <a href="https://sketchfab.com/whitschroder?utm_medium=embed&utm_campaign=share-popup&utm_content=b4a408d1624b4870ac8a77a1405ba1d4" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> whitschroder </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=b4a408d1624b4870ac8a77a1405ba1d4" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p></div>
+  <section class="tex2jax_ignore mathjax_ignore" id="analyzing-and-visualizing-lidar-data">
+<h1>Analyzing and Visualizing Lidar Data<a class="headerlink" href="#analyzing-and-visualizing-lidar-data" title="Link to this heading">#</a></h1>
+<p>Whatever goals and software you have chosen for your project, the first step when working with Lidar data
+is visualizing the point cloud. This tutorial will work with several datasets from Florida’s Peninsular Lidar
+available at: <a class="reference external" href="https://apps.nationalmap.gov/downloader">https://apps.nationalmap.gov/downloader</a>. Zoom into Levy County and select “Elevation Source Data
+(3DEP) - Lidar, IfSAR.” Click “Search Products.” Download the following 3 products:</p>
+<p>Cedar Key: USGS_LPC_FL_Peninsular_2018_D18_LID2019_445066_W.laz<br />
+Shell Mound: USGS_LPC_FL_Peninsular_2018_D18_LID2019_443564_W.laz<br />
+Rosewood: USGS_LPC_FL_Peninsular_2018_D18_LID2019_442972_W.laz</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/USGS.png"><img alt="USGS" class="bg-primary mb-1" src="_images/USGS.png" style="width: 100%;" /></a>
+<p>This point cloud can be loaded into Cloud Compare (File &lt; Open). To open in ArcGIS Pro, first convert to .las
+format using the las2las tool in LAStools. The following command can be run from the Command Prompt:</p>
+<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>C:<span class="se">\L</span>AStools<span class="se">\b</span>in
+</pre></div>
+</div>
+<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span>las2las<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;USGS_LPC_FL_Peninsular_2018_D18_LID2019_442972_W.laz&quot;</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;USGS_LPC_FL_Peninsular_2018_D18_LID2019_442972_W.las&quot;</span>
+</pre></div>
+</div>
+<p>In Cloud Compare, under “Scalar Fields,” change to “Classification.” Adjust the “Color Scale.”</p>
+<p>The Classification is based on the American Society for Photogrammetry and Remote Sensing (ASPRS) standard
+classification codes for point cloud data:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Classification Value</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Created, never classified</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Unclassified</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Ground</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Low Vegetation</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Medium Vegetation</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>High Vegetation</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Building</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Low Point (noise)</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Reserved</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>Water</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Rail</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Road Surface</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>Reserved</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>Wire - Guard (Shield)</p></td>
+</tr>
+<tr class="row-even"><td><p>14</p></td>
+<td><p>Wire - Conductor (Phase)</p></td>
+</tr>
+<tr class="row-odd"><td><p>15</p></td>
+<td><p>Transmission Tower</p></td>
+</tr>
+<tr class="row-even"><td><p>16</p></td>
+<td><p>Wire-structure Connector (e.g., Insulator</p></td>
+</tr>
+<tr class="row-odd"><td><p>17</p></td>
+<td><p>Bridge Deck</p></td>
+</tr>
+<tr class="row-even"><td><p>18</p></td>
+<td><p>High Noise</p></td>
+</tr>
+<tr class="row-odd"><td><p>19-63</p></td>
+<td><p>Reserved</p></td>
+</tr>
+<tr class="row-even"><td><p>64-255</p></td>
+<td><p>User definable</p></td>
+</tr>
+</tbody>
+</table>
+<p>After adjusting the colors of the point cloud based on classification, the Cedar Key point cloud look something
+like this:</p>
+<div class="sketchfab-embed-wrapper"> <iframe title="Cedar Key, Florida" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/b4a408d1624b4870ac8a77a1405ba1d4/embed"> </iframe> </div>  
+<p>The Shell Mound data are in a more forested area with fewer buildings:</p>
+<div class="sketchfab-embed-wrapper"> <iframe title="Shell Mound, Florida" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/6c6cb8086e684cf48298391e08f7dfb3/embed"> </iframe> </div>  
+<p>We can filter out the trees, creating a digital terrain model or bare earth surface, and we can color the points based on ground elevation.</p>
+<div class="sketchfab-embed-wrapper"> <iframe title="Shell Mound Terrain" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/38a3e58c855a4d6eb2d58ba361f2c31e/embed"> </iframe> </div>  
+<p>Here are the point cloud data for Rosewood. What are some other ways to visualize the data?</p>
+<div class="sketchfab-embed-wrapper"> <iframe title="Rosewood, Florida" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/50dec59c9a1642e8a10be4d5a59e38d6/embed"> </iframe> </div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -414,20 +513,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="software.html"
+       href="pointcloud.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Software</p>
+        <p class="prev-next-title">Where to Access Lidar Data</p>
       </div>
     </a>
     <a class="right-next"
-       href="pointcloud.html"
+       href="heritage.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Point Cloud</p>
+        <p class="prev-next-title">Documenting Built Heritage</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
