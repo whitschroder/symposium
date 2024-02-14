@@ -72,4 +72,43 @@ Here are the point cloud data for Rosewood. What are some other ways to visualiz
 
 <div class="sketchfab-embed-wrapper"> <iframe title="Rosewood, Florida" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/50dec59c9a1642e8a10be4d5a59e38d6/embed"> </iframe> </div>
 
-[Cedar Key Point Cloud on Potree](https://whitschroder.github.io/cedarkey)
+[Palenque](https://pointcloud.ucsd.edu/published/Palenque_3D_Atlas.html)  
+[Cedar Key Point Cloud on Potree](https://whitschroder.github.io/cedarkey)  
+[Shell Mound](https://whitschroder.github.io/shellmound)  
+[Rosewood](https://whitschroder.github.io/rosewood)  
+
+```
+lascolor -i "..\file.las" -image "..\file.tif" -o "..\output.las"
+```
+
+```
+PotreeConverter.exe "..\output.las" -o "..\destinationFolder" -generate-page pageName
+```
+
+```Bash
+cd "..\repositoryFolder"
+```
+
+```Bash
+git clone https://github.com/<my-org>/<my-repository-name>
+```
+
+Copy Potree files into the new folder created in the repository folder.
+
+```Bash
+cd "..\repositoryFolder\newfolder"
+```
+
+```Bash
+git add ./*
+```
+
+```Bash
+git commit -m "adding"
+```
+
+```Bash
+git push
+```
+
+Go to your repository settings, scroll to "Pages." Under "Branch," change "None" to "main" and save.

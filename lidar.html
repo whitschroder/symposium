@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -480,7 +480,36 @@ like this:</p>
 <div class="sketchfab-embed-wrapper"> <iframe title="Shell Mound Terrain" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/38a3e58c855a4d6eb2d58ba361f2c31e/embed"> </iframe> </div>  
 <p>Here are the point cloud data for Rosewood. What are some other ways to visualize the data?</p>
 <div class="sketchfab-embed-wrapper"> <iframe title="Rosewood, Florida" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/50dec59c9a1642e8a10be4d5a59e38d6/embed"> </iframe> </div>
-<p><a class="reference external" href="https://whitschroder.github.io/cedarkey">Cedar Key Point Cloud on Potree</a></p>
+<p><a class="reference external" href="https://pointcloud.ucsd.edu/published/Palenque_3D_Atlas.html">Palenque</a><br />
+<a class="reference external" href="https://whitschroder.github.io/cedarkey">Cedar Key Point Cloud on Potree</a><br />
+<a class="reference external" href="https://whitschroder.github.io/shellmound">Shell Mound</a><br />
+<a class="reference external" href="https://whitschroder.github.io/rosewood">Rosewood</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lascolor</span> <span class="o">-</span><span class="n">i</span> <span class="s2">&quot;..</span><span class="se">\f</span><span class="s2">ile.las&quot;</span> <span class="o">-</span><span class="n">image</span> <span class="s2">&quot;..</span><span class="se">\f</span><span class="s2">ile.tif&quot;</span> <span class="o">-</span><span class="n">o</span> <span class="s2">&quot;..\output.las&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PotreeConverter</span><span class="o">.</span><span class="n">exe</span> <span class="s2">&quot;..\output.las&quot;</span> <span class="o">-</span><span class="n">o</span> <span class="s2">&quot;..\destinationFolder&quot;</span> <span class="o">-</span><span class="n">generate</span><span class="o">-</span><span class="n">page</span> <span class="n">pageName</span>
+</pre></div>
+</div>
+<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;..\repositoryFolder&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/&lt;my-org&gt;/&lt;my-repository-name&gt;
+</pre></div>
+</div>
+<p>Copy Potree files into the new folder created in the repository folder.</p>
+<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;..\repositoryFolder\newfolder&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>./*
+</pre></div>
+</div>
+<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;adding&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push
+</pre></div>
+</div>
+<p>Go to your repository settings, scroll to “Pages.” Under “Branch,” change “None” to “main” and save.</p>
 </section>
 
     <script type="text/x-thebe-config">
