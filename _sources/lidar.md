@@ -18,11 +18,11 @@ Rosewood: USGS_LPC_FL_Peninsular_2018_D18_LID2019_442972_W.laz
 This point cloud can be loaded into Cloud Compare (File < Open). To open in ArcGIS Pro, first convert to .las
 format using the las2las tool in LAStools. The following command can be run from the Command Prompt:
 
-```Bash
+```
 cd C:\LAStools\bin
 ```
 
-```Bash
+```
 las2las -i "USGS_LPC_FL_Peninsular_2018_D18_LID2019_442972_W.laz" -o "USGS_LPC_FL_Peninsular_2018_D18_LID2019_442972_W.las"
 ```
 
@@ -71,3 +71,5 @@ We can filter out the trees, creating a digital terrain model or bare earth surf
 Here are the point cloud data for Rosewood. What are some other ways to visualize the data?  
 
 <div class="sketchfab-embed-wrapper"> <iframe title="Rosewood, Florida" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/50dec59c9a1642e8a10be4d5a59e38d6/embed"> </iframe> </div>
+
+[Cedar Key Point Cloud on Potree](https://whitschroder.github.io/cedarkey)

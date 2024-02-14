@@ -2,6 +2,8 @@
 **University of Florida**  
 **Spring 2024**
 
+<https://resiliencesymposium.com>
+
 Thursday, February 22  
 2:30 -- 4:30 pm  
 Venue: University of Florida, School of Architecture Gallery
