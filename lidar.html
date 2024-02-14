@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'lidar';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Documenting Built Heritage" href="heritage.html" />
+    <link rel="next" title="Downloading Lidar Data" href="download.html" />
     <link rel="prev" title="Where to Access Lidar Data" href="pointcloud.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -179,7 +179,15 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="software.html">Software for Lidar Visualization and Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pointcloud.html">Where to Access Lidar Data</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analyzing and Visualizing Lidar Data</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Analyzing and Visualizing Lidar Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="download.html">Downloading Lidar Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudcompare.html">Visualizing Lidar Data in Cloud Compare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lascolor.html">Applying RGB Colors to Point Clouds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sketchfab.html">Sharing Point Clouds with Sketchfab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="potree.html">Sharing Point Clouds with Potree</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="workshop.html">Workshop Activity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="heritage.html">Documenting Built Heritage</a></li>
 </ul>
 
@@ -380,25 +388,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="analyzing-and-visualizing-lidar-data">
 <h1>Analyzing and Visualizing Lidar Data<a class="headerlink" href="#analyzing-and-visualizing-lidar-data" title="Link to this heading">#</a></h1>
-<p>Whatever goals and software you have chosen for your project, the first step when working with Lidar data
-is visualizing the point cloud. This tutorial will work with several datasets from Florida’s Peninsular Lidar
-available at: <a class="reference external" href="https://apps.nationalmap.gov/downloader">https://apps.nationalmap.gov/downloader</a>. Zoom into Levy County and select “Elevation Source Data
-(3DEP) - Lidar, IfSAR.” Click “Search Products.” Download the following 3 products:</p>
-<p>Cedar Key: USGS_LPC_FL_Peninsular_2018_D18_LID2019_445066_W.laz<br />
-Shell Mound: USGS_LPC_FL_Peninsular_2018_D18_LID2019_443564_W.laz<br />
-Rosewood: USGS_LPC_FL_Peninsular_2018_D18_LID2019_442972_W.laz</p>
-<a class="bg-primary mb-1 reference internal image-reference" href="_images/USGS.png"><img alt="USGS" class="bg-primary mb-1" src="_images/USGS.png" style="width: 100%;" /></a>
-<p>This point cloud can be loaded into Cloud Compare (File &lt; Open). To open in ArcGIS Pro, first convert to .las
-format using the las2las tool in LAStools. The following command can be run from the Command Prompt:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">C</span><span class="p">:</span>\<span class="n">LAStools</span>\<span class="nb">bin</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">las2las</span> <span class="o">-</span><span class="n">i</span> <span class="s2">&quot;USGS_LPC_FL_Peninsular_2018_D18_LID2019_442972_W.laz&quot;</span> <span class="o">-</span><span class="n">o</span> <span class="s2">&quot;USGS_LPC_FL_Peninsular_2018_D18_LID2019_442972_W.las&quot;</span>
-</pre></div>
-</div>
-<p>In Cloud Compare, under “Scalar Fields,” change to “Classification.” Adjust the “Color Scale.”</p>
-<p>The Classification is based on the American Society for Photogrammetry and Remote Sensing (ASPRS) standard
-classification codes for point cloud data:</p>
+<p>Lidar data is useful for creating 3D models of cultural heritage objects and the built environment. Raw lidar
+data consists of a point cloud that can be classified to define objects in space. This point cloud can then
+be used to generate a 3D mesh or a digital elevation model (DEM).</p>
+<p>Classification is based on the American Society for Photogrammetry and Remote Sensing (ASPRS) standard classification codes for point cloud data:</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Classification Value</p></th>
@@ -471,45 +464,12 @@ classification codes for point cloud data:</p>
 </tr>
 </tbody>
 </table>
-<p>After adjusting the colors of the point cloud based on classification, the Cedar Key point cloud look something
-like this:</p>
-<div class="sketchfab-embed-wrapper"> <iframe title="Cedar Key, Florida" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/b4a408d1624b4870ac8a77a1405ba1d4/embed"> </iframe> </div>  
-<p>The Shell Mound data are in a more forested area with fewer buildings:</p>
-<div class="sketchfab-embed-wrapper"> <iframe title="Shell Mound, Florida" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/6c6cb8086e684cf48298391e08f7dfb3/embed"> </iframe> </div>  
-<p>We can filter out the trees, creating a digital terrain model or bare earth surface, and we can color the points based on ground elevation.</p>
-<div class="sketchfab-embed-wrapper"> <iframe title="Shell Mound Terrain" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/38a3e58c855a4d6eb2d58ba361f2c31e/embed"> </iframe> </div>  
-<p>Here are the point cloud data for Rosewood. What are some other ways to visualize the data?</p>
-<div class="sketchfab-embed-wrapper"> <iframe title="Rosewood, Florida" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/50dec59c9a1642e8a10be4d5a59e38d6/embed"> </iframe> </div>
-<p><a class="reference external" href="https://pointcloud.ucsd.edu/published/Palenque_3D_Atlas.html">Palenque</a><br />
-<a class="reference external" href="https://whitschroder.github.io/cedarkey">Cedar Key Point Cloud on Potree</a><br />
-<a class="reference external" href="https://whitschroder.github.io/shellmound">Shell Mound</a><br />
-<a class="reference external" href="https://whitschroder.github.io/rosewood">Rosewood</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lascolor</span> <span class="o">-</span><span class="n">i</span> <span class="s2">&quot;..</span><span class="se">\f</span><span class="s2">ile.las&quot;</span> <span class="o">-</span><span class="n">image</span> <span class="s2">&quot;..</span><span class="se">\f</span><span class="s2">ile.tif&quot;</span> <span class="o">-</span><span class="n">o</span> <span class="s2">&quot;..\output.las&quot;</span>
-</pre></div>
+<p>In the following tutorial, we will download publicly available lidar data, visualize the point cloud, and
+share the data online. Here are examples of point cloud data available online:</p>
+<p><a class="reference external" href="https://pointcloud.ucsd.edu/published/Palenque_3D_Atlas.html">Palenque</a></p>
+<p><a class="reference external" href="https://whitschroder.github.io/cedarkey">Cedar Key Point Cloud on Potree</a></p>
+<div class="toctree-wrapper compound">
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PotreeConverter</span><span class="o">.</span><span class="n">exe</span> <span class="s2">&quot;..\output.las&quot;</span> <span class="o">-</span><span class="n">o</span> <span class="s2">&quot;..\destinationFolder&quot;</span> <span class="o">-</span><span class="n">generate</span><span class="o">-</span><span class="n">page</span> <span class="n">pageName</span>
-</pre></div>
-</div>
-<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;..\repositoryFolder&quot;</span>
-</pre></div>
-</div>
-<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/&lt;my-org&gt;/&lt;my-repository-name&gt;
-</pre></div>
-</div>
-<p>Copy Potree files into the new folder created in the repository folder.</p>
-<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;..\repositoryFolder\newfolder&quot;</span>
-</pre></div>
-</div>
-<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>./*
-</pre></div>
-</div>
-<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;adding&quot;</span>
-</pre></div>
-</div>
-<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push
-</pre></div>
-</div>
-<p>Go to your repository settings, scroll to “Pages.” Under “Branch,” change “None” to “main” and save.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -552,11 +512,11 @@ like this:</p>
       </div>
     </a>
     <a class="right-next"
-       href="heritage.html"
+       href="download.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Documenting Built Heritage</p>
+        <p class="prev-next-title">Downloading Lidar Data</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
