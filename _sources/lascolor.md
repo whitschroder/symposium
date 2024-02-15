@@ -14,6 +14,8 @@ in [ArcGIS](https://pro.arcgis.com/en/pro-app/3.1/help/data/imagery/overview-of-
 there should be a .tfw file with the same name as your .tif. Using LAStools, we can add the RGB imagery
 to the point cloud.
 
+# Applying RGB Colors with lascolor
+
 ```
 lascolor -i "..\file.las" -image "..\file.tif" -o "..\output.las"
 ```

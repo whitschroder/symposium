@@ -178,16 +178,34 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="software.html">Software for Lidar Visualization and Analysis</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="pointcloud.html">Where to Access Lidar Data</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="lidar.html">Analyzing and Visualizing Lidar Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="download.html">Downloading Lidar Data</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="cloudcompare.html">Visualizing Lidar Data in Cloud Compare</a></li>
+
+
+
+
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Applying RGB Colors to Point Clouds</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="sketchfab.html">Sharing Point Clouds with Sketchfab</a></li>
+
+
+
 <li class="toctree-l2"><a class="reference internal" href="potree.html">Sharing Point Clouds with Potree</a></li>
+
+
+
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="workshop.html">Workshop Activity</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="heritage.html">Documenting Built Heritage</a></li>
 </ul>
 
@@ -361,7 +379,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -377,6 +397,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Applying RGB Colors to Point Clouds</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-rgb-colors-with-lascolor">Applying RGB Colors with lascolor</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -395,6 +425,9 @@ can be from drone imagery, for example. Alternatively, we can capture imagery fr
 in <a class="reference external" href="https://pro.arcgis.com/en/pro-app/3.1/help/data/imagery/overview-of-georeferencing.htm">ArcGIS</a> or <a class="reference external" href="https://docs.qgis.org/2.18/en/docs/training_manual/forestry/map_georeferencing.html">QGIS</a>. Once georeferenced,
 there should be a .tfw file with the same name as your .tif. Using LAStools, we can add the RGB imagery
 to the point cloud.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="applying-rgb-colors-with-lascolor">
+<h1>Applying RGB Colors with lascolor<a class="headerlink" href="#applying-rgb-colors-with-lascolor" title="Link to this heading">#</a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lascolor</span> <span class="o">-</span><span class="n">i</span> <span class="s2">&quot;..</span><span class="se">\f</span><span class="s2">ile.las&quot;</span> <span class="o">-</span><span class="n">image</span> <span class="s2">&quot;..</span><span class="se">\f</span><span class="s2">ile.tif&quot;</span> <span class="o">-</span><span class="n">o</span> <span class="s2">&quot;..\output.las&quot;</span>
 </pre></div>
 </div>
@@ -457,7 +490,22 @@ to the point cloud.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Applying RGB Colors to Point Clouds</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-rgb-colors-with-lascolor">Applying RGB Colors with lascolor</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>

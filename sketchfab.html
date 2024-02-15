@@ -178,16 +178,34 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="software.html">Software for Lidar Visualization and Analysis</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="pointcloud.html">Where to Access Lidar Data</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="lidar.html">Analyzing and Visualizing Lidar Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="download.html">Downloading Lidar Data</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="cloudcompare.html">Visualizing Lidar Data in Cloud Compare</a></li>
+
+
+
+
 <li class="toctree-l2"><a class="reference internal" href="lascolor.html">Applying RGB Colors to Point Clouds</a></li>
+
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Sharing Point Clouds with Sketchfab</a></li>
+
+
+
 <li class="toctree-l2"><a class="reference internal" href="potree.html">Sharing Point Clouds with Potree</a></li>
+
+
+
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="workshop.html">Workshop Activity</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="heritage.html">Documenting Built Heritage</a></li>
 </ul>
 
@@ -361,7 +379,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -377,6 +397,18 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Sharing Point Clouds with Sketchfab</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cedar-key">Cedar Key</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-mound">Shell Mound</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rosewood">Rosewood</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -398,14 +430,27 @@ Fields removed.</p>
 <p>Sketchfab does not seem to support .las files. In Cloud Compare, save your point cloud as .asc. In your
 Sketchfab account, upload a new model. In the 3D Settings, change the “Background” to black and change “Shading” to “Shadeless.”</p>
 <p>Here are some examples:</p>
-<p>After adjusting the colors of the point cloud based on classification, the Cedar Key point cloud look something
-like this:</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="cedar-key">
+<h1>Cedar Key<a class="headerlink" href="#cedar-key" title="Link to this heading">#</a></h1>
+<p>The colorized point cloud for Cedar Key:</p>
+<div class="sketchfab-embed-wrapper"> <iframe title="Cedar Key RGB" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/48afa85ae5d7465a990bdb0abbbe2593/embed"> </iframe> </div>
+<p>After adjusting the colors of the point cloud based on classification in Cloud Compare and uploading a new model to Sketchfab, the Cedar Key point cloud looks like this:</p>
 <div class="sketchfab-embed-wrapper"> <iframe title="Cedar Key, Florida" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/b4a408d1624b4870ac8a77a1405ba1d4/embed"> </iframe> </div>  
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="shell-mound">
+<h1>Shell Mound<a class="headerlink" href="#shell-mound" title="Link to this heading">#</a></h1>
+<p>The colorized point cloud for Shell Mound:</p>
+<div class="sketchfab-embed-wrapper"> <iframe title="Shell Mound RGB" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/c41b0a119caf477790f3311cb143a8b1/embed"> </iframe> </div>
 <p>The Shell Mound data are in a more forested area with fewer buildings:</p>
 <div class="sketchfab-embed-wrapper"> <iframe title="Shell Mound, Florida" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/6c6cb8086e684cf48298391e08f7dfb3/embed"> </iframe> </div>  
 <p>We can filter out the trees, creating a digital terrain model or bare earth surface, and we can color the points based on ground elevation.</p>
 <div class="sketchfab-embed-wrapper"> <iframe title="Shell Mound Terrain" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/38a3e58c855a4d6eb2d58ba361f2c31e/embed"> </iframe> </div>  
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="rosewood">
+<h1>Rosewood<a class="headerlink" href="#rosewood" title="Link to this heading">#</a></h1>
 <p>Here are the point cloud data for Rosewood. What are some other ways to visualize the data?</p>
+<div class="sketchfab-embed-wrapper"> <iframe title="Rosewood RGB" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/12d645f7be204ac7b5ac2a301ec78267/embed"> </iframe> </div>
 <div class="sketchfab-embed-wrapper"> <iframe title="Rosewood, Florida" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/50dec59c9a1642e8a10be4d5a59e38d6/embed"> </iframe> </div>
 </section>
 
@@ -464,7 +509,24 @@ like this:</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Sharing Point Clouds with Sketchfab</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cedar-key">Cedar Key</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-mound">Shell Mound</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rosewood">Rosewood</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>

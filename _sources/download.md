@@ -13,6 +13,8 @@ Cedar Key: USGS_LPC_FL_Peninsular_2018_D18_LID2019_445066_W.laz
 :width: 100%
 ```
 
+# Summarizing Lidar Data
+
 Using LAStools from the Command Prompt, you can summarize the point cloud data. The option -cd computes the point cloud density.
 
 ```

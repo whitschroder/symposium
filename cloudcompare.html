@@ -178,16 +178,34 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="software.html">Software for Lidar Visualization and Analysis</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="pointcloud.html">Where to Access Lidar Data</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="lidar.html">Analyzing and Visualizing Lidar Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="download.html">Downloading Lidar Data</a></li>
+
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Visualizing Lidar Data in Cloud Compare</a></li>
+
+
+
+
 <li class="toctree-l2"><a class="reference internal" href="lascolor.html">Applying RGB Colors to Point Clouds</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="sketchfab.html">Sharing Point Clouds with Sketchfab</a></li>
+
+
+
 <li class="toctree-l2"><a class="reference internal" href="potree.html">Sharing Point Clouds with Potree</a></li>
+
+
+
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="workshop.html">Workshop Activity</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="heritage.html">Documenting Built Heritage</a></li>
 </ul>
 
@@ -361,7 +379,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -377,6 +397,19 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Visualizing Lidar Data in Cloud Compare</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-point-cloud-file-types">Converting Point Cloud File Types</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-compare">Cloud Compare</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-elevation-data">Extracting Elevation Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-default-visualization">Updating Default Visualization</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -392,12 +425,18 @@ document.write(`
 available in .laz format, which is a zipped point cloud format. To view the point cloud in ArcGIS, the
 data must first be converted to the standard .las format. LAStools supports point cloud conversion
 through the Command Prompt.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="converting-point-cloud-file-types">
+<h1>Converting Point Cloud File Types<a class="headerlink" href="#converting-point-cloud-file-types" title="Link to this heading">#</a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">C</span><span class="p">:</span>\<span class="n">LAStools</span>\<span class="nb">bin</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">las2las</span> <span class="o">-</span><span class="n">i</span> <span class="s2">&quot;..\USGS_LPC_FL_Peninsular_2018_D18_LID2019_442972_W.laz&quot;</span> <span class="o">-</span><span class="n">o</span> <span class="s2">&quot;..\USGS_LPC_FL_Peninsular_2018_D18_LID2019_442972_W.las&quot;</span>
 </pre></div>
 </div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="cloud-compare">
+<h1>Cloud Compare<a class="headerlink" href="#cloud-compare" title="Link to this heading">#</a></h1>
 <p>Alternatively, Cloud Compare already supports .laz format, and the above step can be skipped. Load data
 in Cloud Compare under File &lt; Open.</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="_images/cloudcompare.png"><img alt="cloudcompare" class="bg-primary mb-1" src="_images/cloudcompare.png" style="width: 100%;" /></a>
@@ -407,11 +446,17 @@ scroll down to Scalar Fields under Properties. Choose Classification:</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="_images/classification.png"><img alt="classification" class="bg-primary mb-1" src="_images/classification.png" style="width: 100%;" /></a>
 <p>Or Intensity:</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="_images/intensity.png"><img alt="intensity" class="bg-primary mb-1" src="_images/intensity.png" style="width: 100%;" /></a>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="extracting-elevation-data">
+<h1>Extracting Elevation Data<a class="headerlink" href="#extracting-elevation-data" title="Link to this heading">#</a></h1>
 <p>We can also extract elevation data to a new Scalar Field. Go to Edit &lt; Scalar Fields &lt; Export coordinate(s)
 to SF(s). Make sure Z is selected in the next window and click OK. Scalar Fields under Properties should
 automatically be updated to Coord.Z. Under SF display parameters under Properties, you may have to adjust
 the sliders to change the minimum and maximum display values to improve the visualization.</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="_images/elevation.png"><img alt="elevation" class="bg-primary mb-1" src="_images/elevation.png" style="width: 100%;" /></a>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="updating-default-visualization">
+<h1>Updating Default Visualization<a class="headerlink" href="#updating-default-visualization" title="Link to this heading">#</a></h1>
 <p>You can update the default visualization by replacing RGB with your preferred visualization, for example, elevation. Go to Edit &lt; Scalar Fields &lt; Convert to RGB. Choose No (do not mix with existing values). You can
 also delete all other Scalar Fields except the default to save a smaller file for sharing. Go to Edit &lt; Scalar
 Fields &lt; Delete all (!). You can also reduce the file size by choosing Edit &lt; Subsample and selecting a min. space between points (values from 1 to 3 feet, for example) to reduce the point cloud density. Finally, Save your
@@ -473,7 +518,25 @@ point cloud as a new file.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Visualizing Lidar Data in Cloud Compare</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-point-cloud-file-types">Converting Point Cloud File Types</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-compare">Cloud Compare</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-elevation-data">Extracting Elevation Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-default-visualization">Updating Default Visualization</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>

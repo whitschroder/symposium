@@ -178,16 +178,34 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Software for Lidar Visualization and Analysis</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="pointcloud.html">Where to Access Lidar Data</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="lidar.html">Analyzing and Visualizing Lidar Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="download.html">Downloading Lidar Data</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="cloudcompare.html">Visualizing Lidar Data in Cloud Compare</a></li>
+
+
+
+
 <li class="toctree-l2"><a class="reference internal" href="lascolor.html">Applying RGB Colors to Point Clouds</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="sketchfab.html">Sharing Point Clouds with Sketchfab</a></li>
+
+
+
 <li class="toctree-l2"><a class="reference internal" href="potree.html">Sharing Point Clouds with Potree</a></li>
+
+
+
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="workshop.html">Workshop Activity</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="heritage.html">Documenting Built Heritage</a></li>
 </ul>
 
@@ -361,7 +379,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -377,6 +397,17 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Software for Lidar Visualization and Analysis</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#free-open-access-and-or-open-source">Free, Open Access, and/or Open Source</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#licensed">Licensed</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -389,15 +420,17 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="software-for-lidar-visualization-and-analysis">
 <h1>Software for Lidar Visualization and Analysis<a class="headerlink" href="#software-for-lidar-visualization-and-analysis" title="Link to this heading">#</a></h1>
 <p>Choosing the appropriate software for your project will depend on the scale and goals of your research.
-Lidar data consists of raw point cloud data that can be manipulated and filtered to generate additional
+Lidar data consist of raw point cloud data that can be manipulated and filtered to generate additional
 visualizations to assess questions regarding terrain, the built environment, and canopy. Anyone working
-with Lidar data should have some familiarity with raw point cloud data, as these data represent the actual,
-accurate returns from the Lidar survey. Any other products will be based on the point cloud data and may
+with lidar data should have some familiarity with raw point cloud data, as these data represent the actual,
+accurate returns from the lidar survey. Any other products will be based on the point cloud data and may
 involve some form of interpolation to create a more continuous surface.</p>
 <p>Free, open access, and open source software is available. Some examples have approachable graphical user
 interfaces (GUI), while others rely entirely on coding. Although not necessary, some familiarity with coding
 will open the door to working with big data and automated analyses.</p>
-<p><strong>Free, Open Access, and/or Open Source</strong></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="free-open-access-and-or-open-source">
+<h1>Free, Open Access, and/or Open Source<a class="headerlink" href="#free-open-access-and-or-open-source" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://www.danielgm.net/cc">Cloud Compare</a></p>
 <p>Cloud Compare is a completely free 3D point cloud viewing and processing software. Despite being free,
 Cloud Compare excels at displaying large point cloud data in a simple interface. The software also includes
@@ -410,19 +443,22 @@ for exploratory analysis and automation, although some of the functionality can 
 has been introduced, large datasets can still be a challenge. QGIS is more useful for generating raster derivatives and producing maps.</p>
 <p><a class="reference external" href="https://github.com/potree/potree">Potree</a> (requires a web server)</p>
 <p>Potree is a useful point cloud viewer for sharing data on a website. However, the point cloud viewer only
-works with a dedicated web server. Files can be very large.</p>
+works with a dedicated web server.</p>
 <p><a class="reference external" href="https://pdal.io/en/2.6.0">PDAL</a></p>
 <p>Like R, PDAL is a software that requires coding knowledge. PDAL is a C++ language and is generally faster than R.</p>
-<p><strong>Licensed</strong></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="licensed">
+<h1>Licensed<a class="headerlink" href="#licensed" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://www.geoplan.ufl.edu/software/arcgis-pro">ArcGIS Pro</a> (available to UF students)</p>
 <p>ArcGIS remains one of the most popular geographic informations system software, and although the software is
-proprietary, students at UF have access. Like QGIS, ArcGIS Pro is generally better for raster analysis, as the point cloud viewer can be slow with large datasets. The ground filtering algorithm in ArcGIS Pro is among the fastest. ArcGIS Pro does not suppor .laz formats.</p>
+proprietary, students at UF have access. Like QGIS, ArcGIS Pro is generally better for raster analysis, as the point cloud viewer can be slow with large datasets. The ground filtering algorithm in ArcGIS Pro is among the fastest. ArcGIS Pro does not support .laz formats.</p>
 <p><a class="reference external" href="https://lastools.github.io/">LAStools</a> (some tools are open access)</p>
-<p>LAStools software consists of an extensive and useful set of tools for analyzing and processing Lidar data.
+<p>LAStools software consists of an extensive and useful set of tools for analyzing and processing lidar data.
 Some of the tools are open access, for example, las2las and lasinfo for converting and reading point cloud
 data, respectively.</p>
 <p><a class="reference external" href="https://sketchfab.com">Sketchfab</a></p>
-<p>Sketchfab is “the best 3D viewer on the web” for sharing data online, without requiring a web server. The platform is subscription-based, with upload limits. Still, Sketchfab remains the best option for sharing 3D data. Support for .las files is not reliable, but .asc files work.</p>
+<p>Sketchfab is “the best 3D viewer on the web” for sharing data online, without requiring a separate web server. The platform is subscription-based, with upload limits. Still, Sketchfab remains the most approachable and intuitive
+option for sharing 3D data. Support for .las files is not reliable, but .asc files work.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -480,7 +516,23 @@ data, respectively.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Software for Lidar Visualization and Analysis</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#free-open-access-and-or-open-source">Free, Open Access, and/or Open Source</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#licensed">Licensed</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>

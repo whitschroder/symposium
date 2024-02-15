@@ -178,16 +178,34 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="software.html">Software for Lidar Visualization and Analysis</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="pointcloud.html">Where to Access Lidar Data</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="lidar.html">Analyzing and Visualizing Lidar Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Downloading Lidar Data</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="cloudcompare.html">Visualizing Lidar Data in Cloud Compare</a></li>
+
+
+
+
 <li class="toctree-l2"><a class="reference internal" href="lascolor.html">Applying RGB Colors to Point Clouds</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="sketchfab.html">Sharing Point Clouds with Sketchfab</a></li>
+
+
+
 <li class="toctree-l2"><a class="reference internal" href="potree.html">Sharing Point Clouds with Potree</a></li>
+
+
+
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="workshop.html">Workshop Activity</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="heritage.html">Documenting Built Heritage</a></li>
 </ul>
 
@@ -361,7 +379,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -377,6 +397,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Downloading Lidar Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing-lidar-data">Summarizing Lidar Data</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -394,6 +424,9 @@ available at: <a class="reference external" href="https://apps.nationalmap.gov/d
 (3DEP) - Lidar, IfSAR.” Click “Search Products.” Download the following products:</p>
 <p>Cedar Key: USGS_LPC_FL_Peninsular_2018_D18_LID2019_445066_W.laz</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="_images/USGS.png"><img alt="USGS" class="bg-primary mb-1" src="_images/USGS.png" style="width: 100%;" /></a>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="summarizing-lidar-data">
+<h1>Summarizing Lidar Data<a class="headerlink" href="#summarizing-lidar-data" title="Link to this heading">#</a></h1>
 <p>Using LAStools from the Command Prompt, you can summarize the point cloud data. The option -cd computes the point cloud density.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lasinfo</span> <span class="o">-</span><span class="n">i</span> <span class="s2">&quot;..\USGS_LPC_FL_Peninsular_2018_D18_LID2019_445066_W.laz -o &quot;</span><span class="o">.</span>\<span class="n">cedarkey</span><span class="o">.</span><span class="n">txt</span><span class="s2">&quot;</span>
 </pre></div>
@@ -778,7 +811,22 @@ available at: <a class="reference external" href="https://apps.nationalmap.gov/d
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Downloading Lidar Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing-lidar-data">Summarizing Lidar Data</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>

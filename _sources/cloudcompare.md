@@ -5,6 +5,8 @@ available in .laz format, which is a zipped point cloud format. To view the poin
 data must first be converted to the standard .las format. LAStools supports point cloud conversion
 through the Command Prompt.
 
+# Converting Point Cloud File Types
+
 ```
 cd C:\LAStools\bin
 ```
@@ -12,6 +14,8 @@ cd C:\LAStools\bin
 ```
 las2las -i "..\USGS_LPC_FL_Peninsular_2018_D18_LID2019_442972_W.laz" -o "..\USGS_LPC_FL_Peninsular_2018_D18_LID2019_442972_W.las"
 ```
+
+# Cloud Compare
 
 Alternatively, Cloud Compare already supports .laz format, and the above step can be skipped. Load data
 in Cloud Compare under File < Open.
@@ -40,6 +44,8 @@ Or Intensity:
 :width: 100%
 ```
 
+# Extracting Elevation Data
+
 We can also extract elevation data to a new Scalar Field. Go to Edit < Scalar Fields < Export coordinate(s)
 to SF(s). Make sure Z is selected in the next window and click OK. Scalar Fields under Properties should
 automatically be updated to Coord.Z. Under SF display parameters under Properties, you may have to adjust
@@ -50,6 +56,8 @@ the sliders to change the minimum and maximum display values to improve the visu
 :class: bg-primary mb-1
 :width: 100%
 ```
+
+# Updating Default Visualization
 
 You can update the default visualization by replacing RGB with your preferred visualization, for example, elevation. Go to Edit < Scalar Fields < Convert to RGB. Choose No (do not mix with existing values). You can
 also delete all other Scalar Fields except the default to save a smaller file for sharing. Go to Edit < Scalar

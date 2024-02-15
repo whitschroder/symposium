@@ -13,10 +13,21 @@ Sketchfab account, upload a new model. In the 3D Settings, change the "Backgroun
 
 Here are some examples:
 
-After adjusting the colors of the point cloud based on classification, the Cedar Key point cloud look something
-like this:  
+# Cedar Key
+
+The colorized point cloud for Cedar Key:
+
+<div class="sketchfab-embed-wrapper"> <iframe title="Cedar Key RGB" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/48afa85ae5d7465a990bdb0abbbe2593/embed"> </iframe> </div>
+
+After adjusting the colors of the point cloud based on classification in Cloud Compare and uploading a new model to Sketchfab, the Cedar Key point cloud looks like this:  
 
 <div class="sketchfab-embed-wrapper"> <iframe title="Cedar Key, Florida" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/b4a408d1624b4870ac8a77a1405ba1d4/embed"> </iframe> </div>  
+
+# Shell Mound
+
+The colorized point cloud for Shell Mound:
+
+<div class="sketchfab-embed-wrapper"> <iframe title="Shell Mound RGB" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/c41b0a119caf477790f3311cb143a8b1/embed"> </iframe> </div>
 
 The Shell Mound data are in a more forested area with fewer buildings:  
 
@@ -26,7 +37,11 @@ We can filter out the trees, creating a digital terrain model or bare earth surf
 
 <div class="sketchfab-embed-wrapper"> <iframe title="Shell Mound Terrain" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/38a3e58c855a4d6eb2d58ba361f2c31e/embed"> </iframe> </div>  
 
+# Rosewood
+
 Here are the point cloud data for Rosewood. What are some other ways to visualize the data?  
+
+<div class="sketchfab-embed-wrapper"> <iframe title="Rosewood RGB" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/12d645f7be204ac7b5ac2a301ec78267/embed"> </iframe> </div>
 
 <div class="sketchfab-embed-wrapper"> <iframe title="Rosewood, Florida" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/50dec59c9a1642e8a10be4d5a59e38d6/embed"> </iframe> </div>
 

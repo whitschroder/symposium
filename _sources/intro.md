@@ -5,18 +5,18 @@
 <https://resiliencesymposium.com>
 
 Thursday, February 22  
-2:30 -- 4:30 pm  
+2:30 -- 5:00 pm  
 Venue: University of Florida, School of Architecture Gallery
 
-**Objective**
+# Objective
 
 The track on Resilience and Heritage delves into the symbiotic relationship between built heritage and resilience in the face of disasters and dynamic environmental challenges. This track aims to explore how preserving and integrating heritage into urban planning and disaster management strategies can foster more resilient communities. Heritage, encompassing historic structures, monuments, cultural landscapes, and traditional architectural practices, not only carries immense cultural and historical significance but also plays a pivotal role in enhancing community resilience. The Resilience and Heritage workshop invites researchers, practitioners, heritage experts, and community representatives to share their experiences, insights, and research findings. Together, we aim to explore innovative ways to integrate heritage considerations into urban planning, disaster management, and resilience-building strategies for a more sustainable and culturally rich future.
 
-**Target Audience**
+# Target Audience
 
 This workshop is aimed at students interested in documenting and preserving cultural heritage through environmental change and disasters.
 
-**Schedule**
+# Schedule
 
 ***2:30 -- 3:00 pm***
 
@@ -37,8 +37,6 @@ Lecture on negative heritage and intangible heritage preservation
 Demo on software and where to access remote sensing data
 
 Demo on visualizing and sharing lidar data
-
-Demo on tracking change with lidar and multispectral data
 
 Integrating remote sensing with on-the-ground research and local knowledge
 

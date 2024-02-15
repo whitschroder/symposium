@@ -178,16 +178,34 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="software.html">Software for Lidar Visualization and Analysis</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="pointcloud.html">Where to Access Lidar Data</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="lidar.html">Analyzing and Visualizing Lidar Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="download.html">Downloading Lidar Data</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="cloudcompare.html">Visualizing Lidar Data in Cloud Compare</a></li>
+
+
+
+
 <li class="toctree-l2"><a class="reference internal" href="lascolor.html">Applying RGB Colors to Point Clouds</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="sketchfab.html">Sharing Point Clouds with Sketchfab</a></li>
+
+
+
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Sharing Point Clouds with Potree</a></li>
+
+
+
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="workshop.html">Workshop Activity</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="heritage.html">Documenting Built Heritage</a></li>
 </ul>
 
@@ -361,7 +379,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -377,6 +397,18 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Sharing Point Clouds with Potree</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#using-potree-converter-to-package-a-point-cloud">Using Potree Converter to Package a Point Cloud</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-the-html">Editing the HTML</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#uploading-the-point-cloud-to-github">Uploading the Point Cloud to GitHub</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -392,6 +424,9 @@ document.write(`
 advantage over Sketchfab is that Potree has a built-in interface to allow interaction with the point cloud.
 Potree, however, does not work locally and instead relies on viewing through a web server. A solution is to
 upload models to GitHub, but point clouds will have to be subsampled to file sizes below 100 mb.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="using-potree-converter-to-package-a-point-cloud">
+<h1>Using Potree Converter to Package a Point Cloud<a class="headerlink" href="#using-potree-converter-to-package-a-point-cloud" title="Link to this heading">#</a></h1>
 <p>First, download the Potree Converter from <a class="github reference external" href="https://github.com/potree/potree">potree/potree</a>. In the Command Prompt, change
 the directory to the Potree Converter folder. Run the following command on your point cloud. For sharing on
 GitHub, generate an .html page called index, which will automatically become the home page for your online
@@ -402,6 +437,44 @@ point cloud.</p>
 <p>This command will create an .html page that will display your point cloud. However, if you open this .html
 file on your local computer, you will not see anything because Potree must be hosted on a web server. GitHub
 Pages offers a free and accessible option.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="editing-the-html">
+<h1>Editing the HTML<a class="headerlink" href="#editing-the-html" title="Link to this heading">#</a></h1>
+<p>You can directly edit the newly create index.html file to personalize the point cloud. For example, you can
+add a title. Under the line that reads:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>viewer.setPointBudget(2_000_000);
+&lt;!-- INCLUDE SETTINGS HERE --&gt;
+</pre></div>
+</div>
+<p>add the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">document</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Your Title Here&quot;</span>
+</pre></div>
+</div>
+<p>Under</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">viewer</span><span class="o">.</span><span class="n">loadSettingsFromURL</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>add the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">viewer</span><span class="o">.</span><span class="n">SetDescription</span><span class="p">(</span><span class="s2">&quot;Your Description Here&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Potree assumes metric measurements. If your data area not in meters, under the line that reads:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">viewer</span><span class="o">.</span><span class="n">loadSettingsFromURL</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>add the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">viewer</span><span class="o">.</span><span class="n">setLengthUnit</span><span class="p">(</span><span class="s1">&#39;ft&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You can adjust other settings, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">material</span><span class="o">.</span><span class="n">pointSizeType</span> <span class="o">=</span> <span class="n">Potree</span><span class="o">.</span><span class="n">PointSizeType</span><span class="o">.</span><span class="n">FIXED</span><span class="p">;</span>
+<span class="n">material</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">Potree</span><span class="o">.</span><span class="n">PointShape</span><span class="o">.</span><span class="n">CIRCLE</span><span class="p">;</span>
+<span class="n">material</span><span class="o">.</span><span class="n">activeAttributeName</span> <span class="o">=</span> <span class="s2">&quot;rgba&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="uploading-the-point-cloud-to-github">
+<h1>Uploading the Point Cloud to GitHub<a class="headerlink" href="#uploading-the-point-cloud-to-github" title="Link to this heading">#</a></h1>
 <p>In your GitHub profile, create a new repository, <my-repository-name>. Create a new empty repositoryFolder on your local computer. In the Command Prompt or Bash, run the following command to sync or clone your GitHub repository with your local folder.</p>
 <div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;..\repositoryFolder&quot;</span>
 </pre></div>
@@ -484,7 +557,24 @@ After a few minutes, your GitHub Pages website should be live.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Sharing Point Clouds with Potree</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#using-potree-converter-to-package-a-point-cloud">Using Potree Converter to Package a Point Cloud</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-the-html">Editing the HTML</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#uploading-the-point-cloud-to-github">Uploading the Point Cloud to GitHub</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>

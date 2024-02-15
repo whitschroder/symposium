@@ -4,7 +4,7 @@ Lidar data is becoming increasingly available, especially in the United States.
 
 [Open Topography](https://opentopography.org)
 
-Open Topography is a great starting point for finding Lidar data. Educational access is available, however, 
+Open Topography is a great starting point for finding lidar data. Educational access is available, however, 
 file sizes and downloads are limited. The website can generate raster derivatives based on available point
 cloud data.
 
