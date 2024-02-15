@@ -48,7 +48,7 @@ add the following:
 viewer.SetDescription("Your Description Here");
 ```
 
-Potree assumes metric measurements. If your data area not in meters, under the line that reads:
+Potree assumes metric measurements (it does not automatically import your data's spatial reference). If your data are not in meters, under the line that reads:
 
 ```
 viewer.loadSettingsFromURL();
