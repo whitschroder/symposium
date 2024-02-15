@@ -22,7 +22,7 @@ Pages offers a free and accessible option.
 
 # Editing the HTML
 
-You can directly edit the newly create index.html file to personalize the point cloud. For example, you can 
+You can directly edit the newly created index.html file to personalize the point cloud. For example, you can 
 add a title. Under the line that reads:
 
 ```
@@ -33,7 +33,7 @@ viewer.setPointBudget(2_000_000);
 add the following:
 
 ```
-document.title = "Your Title Here"
+document.title = "Your Title Here";
 ```
 
 Under
