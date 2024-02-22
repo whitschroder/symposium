@@ -59,6 +59,8 @@ its material and any hazards during a storm?
 
 6. What is missing from the lidar data that could be helpful in assessing this property?
 
+7. Experiment with the visualization options, and create your own. What does your visualization reveal?
+
 # Shell Mound
 
 1. Turn on (show) all of the Clasification layers.
@@ -75,17 +77,16 @@ area, etc.)?
 5. Navigate to Shell Mound (check on Google Maps). Find the location in the point cloud.
 
 6. Turn off all Classification options except for ground. Change the Attribute to elevation. Adjust the
-symbology to match your preferred settings.
+symbology to match your preferred settings. Keep your visualization to present to the workshop later.
 
 7. Is the Shell Mound visible? This is an important Native American archaeological site. Can you find
 additional information online?
 
 8. What risks are associated with the Shell Mound's location?
 
-9. Using the Measurement tools, what are the dimensions of the Shell Mound (width, length, height,
-area, etc.)?
+9. Explore the point cloud further. Are there any other possible Shell Mounds in the surrounding area?
 
-10. Explore the point cloud further. Are there any other possible Shell Mounds in the surrounding area?
+10. What is missing from the lidar data that could be helpful in assessing this property?
 
 # Rosewood
 
@@ -106,3 +107,5 @@ different materials. Is the roof of the John Wright house darker or brighter tha
 its material and any hazards during a storm?
 
 6. What is missing from the lidar data that could be helpful in assessing this property?
+
+7. Experiment with the visualization options, and create your own. What does your visualization reveal?
