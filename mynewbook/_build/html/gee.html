@@ -1,0 +1,696 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Workshop Activity &#8212; Resilience and Heritage</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'gee';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Resilience and Heritage 2024" href="gainesville.html" />
+    <link rel="prev" title="Resilience and Heritage" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Resilience and Heritage - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Resilience and Heritage - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Resilience and Heritage
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Workshop Activity</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="gainesville.html">Resilience and Heritage 2024</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="software.html">Software for Lidar Visualization and Analysis</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pointcloud.html">Where to Access Lidar Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lidar.html">Analyzing and Visualizing Lidar Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download.html">Downloading Lidar Data</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="cloudcompare.html">Visualizing Lidar Data in Cloud Compare</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="lascolor.html">Applying RGB Colors to Point Clouds</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="sketchfab.html">Sharing Point Clouds with Sketchfab</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="potree.html">Sharing Point Clouds with Potree</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="workshop.html">Workshop Activity</a></li>
+
+
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/whitschroder/symposium/issues/new?title=Issue%20on%20page%20%2Fgee.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/gee.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Workshop Activity</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-data">Import Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-a-cloud-free-composite">Generate a Cloud Free Composite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-ndvi">Calculate NDVI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-land-cover-classification">Supervised Land Cover Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#export-imagery">Export Imagery</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-links">Additional Links</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="workshop-activity">
+<h1>Workshop Activity<a class="headerlink" href="#workshop-activity" title="Link to this heading">#</a></h1>
+<p>Google Earth Engine provides an interface to process large amounts of spatial imagery with a few lines of code. Rather than searching for and downloading many raster files, Google Earth Engine processes imagery in the cloud. In this lab, students will learn how to conduct a supervised land classification in Google Earth Engine using JavaScript.</p>
+<p>After creating your Google Earth Engine account, go to <a class="reference external" href="https://code.earthengine.google.com">https://code.earthengine.google.com</a>. Then, create a new script.</p>
+<section id="import-data">
+<h2>Import Data<a class="headerlink" href="#import-data" title="Link to this heading">#</a></h2>
+<p>The first step is to define a region. The simplest approach is to use the tools in the map area to create a marker (point). This marker will appear in the Imports section at the top of the script as a variable called geometry. Change the name of this variable to point. Next, we will import Landsat 8 imagery. Under Search places and datasets…, type Landsat 8, and select USGS Landsat 8 Level 2, Collection 2, Tier 1 and click the Import button. Change the name of the variable under Imports to ls8_sr. We can also import elevation data. Search for SRTM, and import NASA SRTM Digital Elevation 30m. Rename this variable to srtm.</p>
+<p>The following code will center the map over your point when the code is run.</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="nb">Map</span><span class="p">.</span><span class="nx">centerObject</span><span class="p">(</span><span class="nx">point</span><span class="p">,</span><span class="w"> </span><span class="mf">7</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Now we can add the SRTM to the map.</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">srtm</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">min</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="mf">3000</span><span class="p">},</span><span class="w"> </span><span class="s1">&#39;SRTM DEM&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="generate-a-cloud-free-composite">
+<h2>Generate a Cloud Free Composite<a class="headerlink" href="#generate-a-cloud-free-composite" title="Link to this heading">#</a></h2>
+<p>Next we will define some variables, including a date range and amount of cloud cover.</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;2023-01-01&#39;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;2023-12-31&#39;</span><span class="p">;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">cloud_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">30</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Imagery will now be filtered to dates within the year 2023 with less than 30% cloud cover using the following code.</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">ls8filtered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ls8_sr</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">filterDate</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span><span class="nx">end</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">filterBounds</span><span class="p">(</span><span class="nx">point</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">filterMetadata</span><span class="p">(</span><span class="s1">&#39;CLOUD_COVER&#39;</span><span class="p">,</span><span class="s1">&#39;less_than&#39;</span><span class="p">,</span><span class="nx">cloud_max</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>We can print the new image collection to determine the size of our data:</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="nx">print</span><span class="p">(</span><span class="nx">ls8filtered</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>We now define several functions to rescale the imagery and to apply the cloud mask.</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="c1">//function to rescale LS8 in GEE</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">apply_offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">image</span><span class="p">){</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">image</span><span class="p">.</span><span class="nx">toFloat</span><span class="p">().</span><span class="nx">multiply</span><span class="p">(</span><span class="mf">0.0000275</span><span class="p">).</span><span class="nx">add</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">).</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;system:time_start&#39;</span><span class="p">,</span><span class="nx">image</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;system:time_start&#39;</span><span class="p">));</span>
+<span class="p">};</span>
+
+<span class="c1">//define LS8 cloud mask function based on QA band</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">L8CloudMask_fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">image</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Bits 3 and 5 are cloud shadow and cloud, respectively.</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">cloudShadowBitMask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">cloudsBitMask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
+
+<span class="c1">// Get the pixel QA band.</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">qa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">image</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s1">&#39;QA_PIXEL&#39;</span><span class="p">);</span>
+
+<span class="w"> </span><span class="c1">// Both flags should be set to zero, indicating clear conditions.</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">qa</span><span class="p">.</span><span class="nx">bitwiseAnd</span><span class="p">(</span><span class="nx">cloudShadowBitMask</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">and</span><span class="p">(</span><span class="nx">qa</span><span class="p">.</span><span class="nx">bitwiseAnd</span><span class="p">(</span><span class="nx">cloudsBitMask</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mf">0</span><span class="p">));</span>
+
+<span class="c1">// Return the masked image, scaled to reflectance, without the QA bands.</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">image</span><span class="p">.</span><span class="nx">updateMask</span><span class="p">(</span><span class="nx">mask</span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s1">&#39;SR_B1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;SR_B2&#39;</span><span class="p">,</span><span class="s1">&#39;SR_B3&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;SR_B4&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;SR_B5&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;SR_B6&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;SR_B7&#39;</span><span class="p">).</span><span class="nx">rename</span><span class="p">(</span><span class="s1">&#39;B1&#39;</span><span class="p">,</span><span class="s1">&#39;B2&#39;</span><span class="p">,</span><span class="s1">&#39;B3&#39;</span><span class="p">,</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span><span class="s1">&#39;B5&#39;</span><span class="p">,</span><span class="s1">&#39;B6&#39;</span><span class="p">,</span><span class="s1">&#39;B7&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;system:time_start&#39;</span><span class="p">,</span><span class="nx">image</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;system:time_start&#39;</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="c1">//apply cloud mask function and offset function</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">LS8_masked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ls8filtered</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">L8CloudMask_fun</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">apply_offset</span><span class="p">);</span>
+<span class="nx">print</span><span class="p">(</span><span class="nx">LS8_masked</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Finally, we can display the filtered, masked, and rescaled imagery. Defining the bands as B4, B3, B2 creates a true color composite.</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="c1">//create LS8 median composite and display</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">composite</span><span class="o">=</span><span class="w"> </span><span class="nx">LS8_masked</span><span class="p">.</span><span class="nx">median</span><span class="p">();</span>
+<span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">composite</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">bands</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B3&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B2&#39;</span><span class="p">],</span><span class="w"> </span><span class="nx">min</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">0.15</span><span class="p">},</span><span class="w"> </span><span class="s1">&#39;Landsat 8 composite&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="calculate-ndvi">
+<h2>Calculate NDVI<a class="headerlink" href="#calculate-ndvi" title="Link to this heading">#</a></h2>
+<p>Using the 2023 composite imagery, we can also calculate the Normalized Difference Vegetation Index.</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">b5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">composite</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;B5&quot;</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">b4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">composite</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;B4&quot;</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">ndvi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">b5</span><span class="p">.</span><span class="nx">subtract</span><span class="p">(</span><span class="nx">b4</span><span class="p">).</span><span class="nx">divide</span><span class="p">(</span><span class="nx">b5</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">b4</span><span class="p">)).</span><span class="nx">rename</span><span class="p">(</span><span class="s1">&#39;NDVI&#39;</span><span class="p">);</span>
+
+<span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">ndvi</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">min</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">palette</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;white&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;green&quot;</span><span class="p">]}</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;NDVI&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="supervised-land-cover-classification">
+<h2>Supervised Land Cover Classification<a class="headerlink" href="#supervised-land-cover-classification" title="Link to this heading">#</a></h2>
+<p>We will now conduct a supervised land cover classification using the Landsat 8 composite, SRTM DEM, and NDVI.</p>
+<p>In a similar fashion to how the study area was defined with a point, we can define training polygons by selecting Draw a shape or Draw a rectangle in the lower map section. We will define 4 land cover classes: forest, cultivated, urban, and water. In the map section add a new layer for each of these classes and choose a suitable color. Import as a FeatureCollection and add a property called landcover. Assign forest a landcover value of 0, cultivated 1, urban 2, and water 3.</p>
+<p>We will now merge these polygons.</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="c1">//Create training polygons</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">polygons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">forest</span><span class="p">.</span><span class="nx">merge</span><span class="p">(</span><span class="nx">cultivated</span><span class="p">).</span><span class="nx">merge</span><span class="p">(</span><span class="nx">urban</span><span class="p">).</span><span class="nx">merge</span><span class="p">(</span><span class="nx">water</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Next, we define the composite imagery, combining our 2023 Landsat 8 composite with the SRTM DEM and the NDVI.</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">compositeFin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">composite</span><span class="p">.</span><span class="nx">addBands</span><span class="p">(</span><span class="nx">srtm</span><span class="p">).</span><span class="nx">addBands</span><span class="p">(</span><span class="nx">ndvi</span><span class="p">);</span>
+<span class="nx">print</span><span class="w"> </span><span class="p">(</span><span class="nx">compositeFin</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;final composite&#39;</span><span class="p">);</span>
+
+
+<span class="c1">//define prediction bands</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">bands</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;B1&#39;</span><span class="p">,</span><span class="s1">&#39;B2&#39;</span><span class="p">,</span><span class="s1">&#39;B3&#39;</span><span class="p">,</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span><span class="s1">&#39;B5&#39;</span><span class="p">,</span><span class="s1">&#39;B6&#39;</span><span class="p">,</span><span class="s1">&#39;B7&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;elevation&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;NDVI&#39;</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>The next step trains the classifier using a random forest algorithm. We also separate the training data into 70% for training and 30% for validation.</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="c1">//Train the classifier</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">compositeFin</span><span class="p">.</span><span class="nx">sampleRegions</span><span class="p">({</span><span class="w">  </span>
+<span class="w">  </span><span class="c1">// Get the sample from the polygons FeatureCollection.</span>
+<span class="w">  </span><span class="nx">collection</span><span class="o">:</span><span class="w"> </span><span class="nx">polygons</span><span class="p">,</span><span class="w"> </span><span class="c1">//converts each pixel into a feature and extracts the &#39;landcover&#39; value for each pixel</span>
+<span class="w">  </span><span class="c1">// Keep this list of properties from the polygons.</span>
+<span class="w">  </span><span class="nx">properties</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;landcover&#39;</span><span class="p">],</span>
+<span class="w">  </span><span class="c1">// Set the scale to get Landsat pixels in the polygons.</span>
+<span class="w">  </span><span class="nx">scale</span><span class="o">:</span><span class="w"> </span><span class="mf">30</span>
+<span class="p">}).</span><span class="nx">randomColumn</span><span class="p">(</span><span class="s1">&#39;random&#39;</span><span class="p">);</span>
+
+<span class="nx">print</span><span class="p">(</span><span class="nx">sample</span><span class="p">.</span><span class="nx">first</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;sample&#39;</span><span class="p">)</span>
+
+<span class="c1">//split the sample data into training and validation </span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">split</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.7</span><span class="p">;</span><span class="w">  </span><span class="c1">// Roughly 70% training, 30% validation.</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">training</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sample</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">ee</span><span class="p">.</span><span class="nx">Filter</span><span class="p">.</span><span class="nx">lt</span><span class="p">(</span><span class="s1">&#39;random&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">split</span><span class="p">));</span><span class="w"> </span>
+<span class="c1">//--&gt; Use the training sample to train your model</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">validation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sample</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">ee</span><span class="p">.</span><span class="nx">Filter</span><span class="p">.</span><span class="nx">gte</span><span class="p">(</span><span class="s1">&#39;random&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">split</span><span class="p">));</span>
+<span class="c1">//--&gt; we will use this validation sample later to evaluate the accuracy of our model</span>
+<span class="nx">print</span><span class="p">(</span><span class="s1">&#39;Samples n =&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">sample</span><span class="p">.</span><span class="nx">aggregate_count</span><span class="p">(</span><span class="s1">&#39;.all&#39;</span><span class="p">));</span>
+<span class="nx">print</span><span class="p">(</span><span class="s1">&#39;Training n =&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">training</span><span class="p">.</span><span class="nx">aggregate_count</span><span class="p">(</span><span class="s1">&#39;.all&#39;</span><span class="p">));</span>
+<span class="nx">print</span><span class="p">(</span><span class="s1">&#39;Validation n =&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">validation</span><span class="p">.</span><span class="nx">aggregate_count</span><span class="p">(</span><span class="s1">&#39;.all&#39;</span><span class="p">));</span>
+
+<span class="c1">//define the classifier --&gt; this is the classification method you want to use</span>
+<span class="c1">//along with any of ther parameters you would like to define</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">classifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ee</span><span class="p">.</span><span class="nx">Classifier</span><span class="p">.</span><span class="nx">smileRandomForest</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">numberOfTrees</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span>
+<span class="p">});</span>
+
+<span class="c1">//Train the classifier</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">trained</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">classifier</span><span class="p">.</span><span class="nx">train</span><span class="p">(</span><span class="nx">training</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;landcover&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">bands</span><span class="p">);</span>
+<span class="nx">print</span><span class="w"> </span><span class="p">(</span><span class="nx">trained</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;trained&#39;</span><span class="p">)</span>
+
+<span class="c1">//Classify the image</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">classified</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">compositeFin</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="nx">bands</span><span class="p">).</span><span class="nx">classify</span><span class="p">(</span><span class="nx">trained</span><span class="p">);</span>
+<span class="w"> </span>
+<span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">classified</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">min</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">palette</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;blue&#39;</span><span class="p">]},</span><span class="w"> </span><span class="s1">&#39;Classified&#39;</span><span class="p">);</span>
+
+<span class="c1">//Calculate Accuracy</span>
+
+<span class="c1">//classify each point in the validation dataset</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">validated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">validation</span><span class="p">.</span><span class="nx">classify</span><span class="p">(</span><span class="nx">trained</span><span class="p">);</span>
+<span class="nx">print</span><span class="p">(</span><span class="nx">validated</span><span class="p">.</span><span class="nx">first</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;validated&#39;</span><span class="p">)</span>
+
+<span class="c1">// Get a confusion matrix representing expected accuracy.</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">testAccuracy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">validated</span><span class="p">.</span><span class="nx">errorMatrix</span><span class="p">(</span><span class="s1">&#39;landcover&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;classification&#39;</span><span class="p">);</span>
+<span class="nx">print</span><span class="p">(</span><span class="s1">&#39;Validation error matrix: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">testAccuracy</span><span class="p">);</span>
+<span class="nx">print</span><span class="p">(</span><span class="s1">&#39;Validation overall accuracy: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">testAccuracy</span><span class="p">.</span><span class="nx">accuracy</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>We can now view the land cover classification in the map section, and we can view a confusion matrix of the validation data. We can further refine the classification by altering and adding training polygons.</p>
+</section>
+<section id="export-imagery">
+<h2>Export Imagery<a class="headerlink" href="#export-imagery" title="Link to this heading">#</a></h2>
+<p>We can also export any imagery generated in Google Earth Engine to our local drive for additional processing or data presentation. Depending on the size of the data (more than 1,000,000,000 pixels), you may need to import a grid and export data in smaller chunks.</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="nx">Export</span><span class="p">.</span><span class="nx">image</span><span class="p">.</span><span class="nx">toDrive</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="nx">classified</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;classified&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">maxPixels</span><span class="o">:</span><span class="mf">1e9</span><span class="p">,</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Once you have run the code, go to the Tasks section and run the unsubmitted tasks. Here you can set the resolution and other parameters. By default, the imagery will be exported to your Google Drive main folder where you can then download locally.</p>
+</section>
+<section id="additional-links">
+<h2>Additional Links<a class="headerlink" href="#additional-links" title="Link to this heading">#</a></h2>
+<p>To develop more skills in Google Earth Engine, additional code is available at the following links:</p>
+<p><a class="reference external" href="https://calekochenour.github.io/remote-sensing-textbook/introduction.html">Remote Sensing with Google Earth Engine</a></p>
+<p><a class="reference external" href="https://andrewmaclachlan.github.io/CASA0023/5_GEE_I.html">Remotely Sensing Cities and Environments</a></p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<p>Alcover Firpi, Omar A. 2016. Satellite Data for All? Review of Google Earth Engine
+for Archaeological Remote Sensing. Internet Archaeology 42.
+<a class="reference external" href="https://doi.org/10.11141/ia.42.10">https://doi.org/10.11141/ia.42.10</a></p>
+<p>Herndon, Kelsey, Robert Griffin, Whittaker Schroder, Timothy Murtha, Charles Golden,
+Daniel A. Contreras, Emil Cherrington, Luwei Wang, Alexandra Bazarsky, G. Van Kollias,
+and Omar Alcover Firpi. 2023. Google Earth Engine for Archaeologists: An Updated
+Look at the Progress and Promise of Remotely Sensed Big Data. Journal of Archaeological
+Science: Reports 50:104094. <a class="reference external" href="https://doi.org/10.1016/j.jasrep.2023.104094">https://doi.org/10.1016/j.jasrep.2023.104094</a></p>
+<p>Orengo, H.A., A. Garcia-Molsosa. 2019. A Brave New World for Archaeological Survey:
+Automated Machine Learning-Based Potsherd Detection Using High-Resolution Drone Imagery.
+Journal of Archaeological Science 112: 105013. <a class="reference external" href="https://doi.org/10.1016/j.jas.2019.105013">https://doi.org/10.1016/j.jas.2019.105013</a></p>
+<p>Orengo, H.A., Francesc C. Conesa, Arnau Garcia-Molsosa, and Cameron A. Petrie. 2020.
+Automated Detection of Archaeological Mounds Using Machine-Learning Classification of
+Multisensor and Multitemporal Satellite Data. PNAS 117(31):18240-18250.
+<a class="reference external" href="https://doi.org/10.1073/pnas.2005583117">https://doi.org/10.1073/pnas.2005583117</a></p>
+<p>Orengo, H.A. and Cameron A. Petrie. 2017. Multi-scale relief model (MSRM): a new algorithm for the visualization of subtle topographic change of variable size in digital elevation models. Earth Surface Processes and Landforms 43(6):1361-1369. <a class="reference external" href="https://doi.org/10.1002/esp.4317">https://doi.org/10.1002/esp.4317</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Resilience and Heritage</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="gainesville.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Resilience and Heritage 2024</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-data">Import Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-a-cloud-free-composite">Generate a Cloud Free Composite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-ndvi">Calculate NDVI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-land-cover-classification">Supervised Land Cover Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#export-imagery">Export Imagery</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-links">Additional Links</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Whittaker Schroder
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

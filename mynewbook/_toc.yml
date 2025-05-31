@@ -4,7 +4,15 @@
 format: jb-book
 root: intro
 chapters:
-- file: software
-- file: lidar
-- file: pointcloud
-- file: heritage
+- file: gee
+- file: gainesville
+  sections:
+  - file: software
+  - file: pointcloud
+  - file: lidar
+  - file: download
+  - file: cloudcompare
+  - file: lascolor
+  - file: sketchfab
+  - file: potree
+  - file: workshop

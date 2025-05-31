@@ -1,0 +1,841 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Downloading Lidar Data &#8212; Resilience and Heritage</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'download';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Visualizing Lidar Data in Cloud Compare" href="cloudcompare.html" />
+    <link rel="prev" title="Analyzing and Visualizing Lidar Data" href="lidar.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Resilience and Heritage - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Resilience and Heritage - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Resilience and Heritage
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="gee.html">Workshop Activity</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="gainesville.html">Resilience and Heritage 2024</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="software.html">Software for Lidar Visualization and Analysis</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pointcloud.html">Where to Access Lidar Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lidar.html">Analyzing and Visualizing Lidar Data</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Downloading Lidar Data</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="cloudcompare.html">Visualizing Lidar Data in Cloud Compare</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="lascolor.html">Applying RGB Colors to Point Clouds</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="sketchfab.html">Sharing Point Clouds with Sketchfab</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="potree.html">Sharing Point Clouds with Potree</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="workshop.html">Workshop Activity</a></li>
+
+
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/whitschroder/symposium/issues/new?title=Issue%20on%20page%20%2Fdownload.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/download.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Downloading Lidar Data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Downloading Lidar Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing-lidar-data">Summarizing Lidar Data</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="downloading-lidar-data">
+<h1>Downloading Lidar Data<a class="headerlink" href="#downloading-lidar-data" title="Link to this heading">#</a></h1>
+<p>Whatever goals and software you have chosen for your project, the first step when working with Lidar data
+is downloading the point cloud. This tutorial will work with data from Florida’s Peninsular Lidar
+available at: <a class="reference external" href="https://apps.nationalmap.gov/downloader">https://apps.nationalmap.gov/downloader</a>. Zoom into Cedar Key and select “Elevation Source Data
+(3DEP) - Lidar, IfSAR.” Click “Search Products.” Download the following products:</p>
+<p>Cedar Key: USGS_LPC_FL_Peninsular_2018_D18_LID2019_445066_W.laz</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/USGS.png"><img alt="USGS" class="bg-primary mb-1" src="_images/USGS.png" style="width: 100%;" /></a>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="summarizing-lidar-data">
+<h1>Summarizing Lidar Data<a class="headerlink" href="#summarizing-lidar-data" title="Link to this heading">#</a></h1>
+<p>Using LAStools from the Command Prompt, you can summarize the point cloud data. The option -cd computes the point cloud density.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lasinfo</span> <span class="o">-</span><span class="n">i</span> <span class="s2">&quot;..\USGS_LPC_FL_Peninsular_2018_D18_LID2019_445066_W.laz -o &quot;</span><span class="o">.</span>\<span class="n">cedarkey</span><span class="o">.</span><span class="n">txt</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>The output text file contains the following summary:</p>
+<p>lasinfo (231025) report for ‘USGS_LPC_FL_Peninsular_2018_D18_LID2019_445066_W.laz’</p>
+<p>reporting all LAS header entries:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>file signature:</p></td>
+<td><p>‘LASF’</p></td>
+</tr>
+<tr class="row-odd"><td><p>file source ID:</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>global_encoding:</p></td>
+<td><p>17</p></td>
+</tr>
+<tr class="row-odd"><td><p>project ID GUID data 1-4:</p></td>
+<td><p>918CD7FC-CC3A-44D0-0000-000000000000</p></td>
+</tr>
+<tr class="row-even"><td><p>version major.minor:</p></td>
+<td><p>1.4</p></td>
+</tr>
+<tr class="row-odd"><td><p>system identifier:</p></td>
+<td><p>‘VQ1560i’</p></td>
+</tr>
+<tr class="row-even"><td><p>generating software:</p></td>
+<td><p>‘GeoCue LAS Updater’</p></td>
+</tr>
+<tr class="row-odd"><td><p>file creation day/year:</p></td>
+<td><p>239/2021</p></td>
+</tr>
+<tr class="row-even"><td><p>header size:</p></td>
+<td><p>375</p></td>
+</tr>
+<tr class="row-odd"><td><p>offset to point data:</p></td>
+<td><p>1594</p></td>
+</tr>
+<tr class="row-even"><td><p>number var. length records:</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>point data format:</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-even"><td><p>point data record length:</p></td>
+<td><p>30</p></td>
+</tr>
+<tr class="row-odd"><td><p>number of point records:</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>number of points by return:</p></td>
+<td><p>0 0 0 0 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>scale factor x y z:</p></td>
+<td><p>0.01 0.01 0.01</p></td>
+</tr>
+<tr class="row-even"><td><p>offset x y z:</p></td>
+<td><p>0 0 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>min x y z:</p></td>
+<td><p>325000.00 1745000.00 -236.35</p></td>
+</tr>
+<tr class="row-even"><td><p>max x y z:</p></td>
+<td><p>330000.00 1750000.00 243.44</p></td>
+</tr>
+<tr class="row-odd"><td><p>start of waveform data packet record:</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>start of first extended variable length record:</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>number of extended_variable length records:</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>extended number of point records:</p></td>
+<td><p>20138813</p></td>
+</tr>
+<tr class="row-odd"><td><p>extended number of points by return:</p></td>
+<td><p>17267249 2371680 454686 44956 240 2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>variable length header record 1 of 3:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>reserved</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>user ID</p></td>
+<td><p>‘LASF_Projection’</p></td>
+</tr>
+<tr class="row-even"><td><p>record ID</p></td>
+<td><p>2112</p></td>
+</tr>
+<tr class="row-odd"><td><p>length after header</p></td>
+<td><p>1019</p></td>
+</tr>
+<tr class="row-even"><td><p>description</p></td>
+<td><p>‘OGC WKT Coordinate System’</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>WKT OGC COORDINATE SYSTEM:</p>
+<p>COMPD_CS[“NAD83(2011) / Florida West (ftUS) + NAVD88 height - Geoid12B (ftUS)”,PROJCS[“NAD83(2011) / Florida West (ftUS)”,GEOGCS[“NAD83(2011)”,DATUM[“NAD83_National_Spatial_Reference_System_2011”,SPHEROID[“GRS 1980”,6378137,298.257222101,AUTHORITY[“EPSG”,”7019”]],AUTHORITY[“EPSG”,”1116”]],PRIMEM[“Greenwich”,0,AUTHORITY[“EPSG”,”8901”]],UNIT[“degree”,0.0174532925199433,AUTHORITY[“EPSG”,”9122”]],AUTHORITY[“EPSG”,”6318”]],PROJECTION[“Transverse_Mercator”],PARAMETER[“latitude_of_origin”,24.33333333333333],PARAMETER[“central_meridian”,-82],PARAMETER[“scale_factor”,0.999941177],PARAMETER[“false_easting”,656166.667],PARAMETER[“false_northing”,0],UNIT[“US survey foot”,0.3048006096012192,AUTHORITY[“EPSG”,”9003”]],AXIS[“X”,EAST],AXIS[“Y”,NORTH],AUTHORITY[“EPSG”,”6443”]],VERT_CS[“NAVD88 height - Geoid12B (ftUS)”,VERT_DATUM[“North American Vertical Datum 1988”,2005,AUTHORITY[“EPSG”,”5103”]],UNIT[“US survey foot”,0.3048006096012192,AUTHORITY[“EPSG”,”9003”]],AXIS[“Gravity-related height”,UP],AUTHORITY[“EPSG”,”6360”]]]</p>
+<p>variable length header record 2 of 3:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>reserved</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>user ID</p></td>
+<td><p>‘NIIRS10’</p></td>
+</tr>
+<tr class="row-even"><td><p>record ID</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p>length after header</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-even"><td><p>description</p></td>
+<td><p>‘NIIRS10 Timestamp’</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>variable length header record 3 of 3:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>reserved</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>user ID</p></td>
+<td><p>‘NIIRS10’</p></td>
+</tr>
+<tr class="row-even"><td><p>record ID</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>length after header</p></td>
+<td><p>26</p></td>
+</tr>
+<tr class="row-even"><td><p>description</p></td>
+<td><p>‘NIIRS10 Tile Index’</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>the header is followed by 2 user-defined bytes</p>
+<p>LASzip compression (version 3.4r3 c3 50000): POINT14 3</p>
+<p>reporting minimum and maximum for all LAS point record entries …</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>X</p></td>
+<td><p>32500000</p></td>
+<td><p>33000000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Y</p></td>
+<td><p>174500000</p></td>
+<td><p>175000000</p></td>
+</tr>
+<tr class="row-even"><td><p>Z</p></td>
+<td><p>-23635</p></td>
+<td><p>24344</p></td>
+</tr>
+<tr class="row-odd"><td><p>intensity</p></td>
+<td><p>20556</p></td>
+<td><p>65535</p></td>
+</tr>
+<tr class="row-even"><td><p>return_number</p></td>
+<td><p>1</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>number_of_returns</p></td>
+<td><p>1</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-even"><td><p>edge_of_flight_line</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>scan_direction_flag</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>classification</p></td>
+<td><p>1</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-odd"><td><p>scan_angle_rank</p></td>
+<td><p>-29</p></td>
+<td><p>29</p></td>
+</tr>
+<tr class="row-even"><td><p>user_data</p></td>
+<td><p>62</p></td>
+<td><p>63</p></td>
+</tr>
+<tr class="row-odd"><td><p>point_source_ID</p></td>
+<td><p>16218</p></td>
+<td><p>16303</p></td>
+</tr>
+<tr class="row-even"><td><p>gps_time</p></td>
+<td><p>239895773.177126</p></td>
+<td><p>239974345.060344</p></td>
+</tr>
+<tr class="row-odd"><td><p>extended_return_number</p></td>
+<td><p>1</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-even"><td><p>extended_number_of_returns</p></td>
+<td><p>1</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>extended_classification</p></td>
+<td><p>1</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-even"><td><p>extended_scan_angle</p></td>
+<td><p>-4833</p></td>
+<td><p>4833</p></td>
+</tr>
+<tr class="row-odd"><td><p>extended_scanner_channel</p></td>
+<td><p>1</p></td>
+<td><p>2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>number of first returns:</p></td>
+<td><p>17267249</p></td>
+</tr>
+<tr class="row-odd"><td><p>number of intermediate returns:</p></td>
+<td><p>499795</p></td>
+</tr>
+<tr class="row-even"><td><p>number of last returns:</p></td>
+<td><p>17267424</p></td>
+</tr>
+<tr class="row-odd"><td><p>number of single returns:</p></td>
+<td><p>14895655</p></td>
+</tr>
+<tr class="row-even"><td><p>covered area in square units/kilounits:</p></td>
+<td><p>14766648/14.77</p></td>
+</tr>
+<tr class="row-odd"><td><p>point density:</p></td>
+<td><p>all returns 1.36 last only 1.17 (per square units)</p></td>
+</tr>
+<tr class="row-even"><td><p>spacing:</p></td>
+<td><p>all returns 0.86 last only 0.92 (in units)</p></td>
+</tr>
+<tr class="row-odd"><td><p>overview over extended number of returns of given pulse:</p></td>
+<td><p>14895655 3834052 1229087 178817 1190 12</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>histogram of classification of points:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>9956641</p></td>
+<td><p>unclassified (1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>6932736</p></td>
+<td><p>ground (2)</p></td>
+</tr>
+<tr class="row-even"><td><p>710293</p></td>
+<td><p>building (6)</p></td>
+</tr>
+<tr class="row-odd"><td><p>9612</p></td>
+<td><p>noise (7)</p></td>
+</tr>
+<tr class="row-even"><td><p>2470984</p></td>
+<td><p>water (9)</p></td>
+</tr>
+<tr class="row-odd"><td><p>22826</p></td>
+<td><p>bridge deck (17)</p></td>
+</tr>
+<tr class="row-even"><td><p>827</p></td>
+<td><p>Reserved for ASPRS Definition (18)</p></td>
+</tr>
+<tr class="row-odd"><td><p>34894</p></td>
+<td><p>Reserved for ASPRS Definition (20)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>+-&gt; flagged as synthetic: 28701<br />
++—&gt;           28701 of those are unclassified (1)<br />
++-&gt; flagged as withheld:  960549<br />
++—&gt;          960549 of those are unclassified (1)<br />
++-&gt; flagged as extended overlap: 1670499<br />
++—&gt;         1330674 of those are unclassified (1)<br />
++—&gt;          312450 of those are ground (2)<br />
++—&gt;           23858 of those are building (6)<br />
++—&gt;            3505 of those are water (9)<br />
++—&gt;              12 of those are Reserved for ASPRS Definition (18)</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lidar.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Analyzing and Visualizing Lidar Data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="cloudcompare.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Visualizing Lidar Data in Cloud Compare</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Downloading Lidar Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing-lidar-data">Summarizing Lidar Data</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Whittaker Schroder
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
