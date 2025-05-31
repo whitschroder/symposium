@@ -1,12 +1,12 @@
 # Resilience and Heritage
-**University of Florida**  
-**Spring 2024**
+**Universidad de Cuenca**  
+**Summer 2025**
 
 <https://resiliencesymposium.com>
 
-Thursday, February 22  
-2:30 -- 5:00 pm  
-Venue: University of Florida, School of Architecture Gallery
+Friday, June 6  
+8:30 am -- 12:00 pm  
+Venue: Facultad de Arquitectura y Urbanismo, Universidad de Cuenca
 
 # Objective
 
@@ -18,7 +18,15 @@ This workshop is aimed at students interested in documenting and preserving cult
 
 # Schedule
 
-***2:30 -- 3:00 pm***
+***8:30 -- 10:15 am***
+
+**AI and Data Science for Disaster Resilience, Public Space and Mobility**  
+**Led by Dr. Changjie Chen**
+
+***10:15 am -- 12:00 pm***
+
+**Resilience and Heritage**  
+**Led by Dr. Whit Schroder**
 
 **Introduction**
 
@@ -26,21 +34,11 @@ Welcome and goals for the workshop
 
 Lecture on heritage preservation in post-disaster recovery and remote sensing
 
-Lecture on adaptive reuse of heritage structures for resilience
-
-Lecture on negative heritage and intangible heritage preservation
-
-***3:00 -- 4:00 pm***
+Lecture on cultural and environmental land cover classification
 
 **Tools for Heritage Documentation**
 
-Demo on software and where to access remote sensing data
-
-Demo on visualizing and sharing lidar data
-
-Integrating remote sensing with on-the-ground research and local knowledge
-
-***4:00 -- 4:30 pm***
+Workshop on analyzing multispectral imagery in Google Earth Engine
 
 **Conclusion and Q&A**
 
