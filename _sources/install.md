@@ -1,4 +1,6 @@
-# Install Required Software
+# Install Software
+
+This workshop will use cloud-based approaches that require a Google account. No additional software is required.
 
 ## Google Earth Engine
 
