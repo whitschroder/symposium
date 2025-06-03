@@ -1,0 +1,750 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction to Multispectral Satellite Imagery &#8212; Resilience and Heritage</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'multispectral';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Workshop Activity" href="gee.html" />
+    <link rel="prev" title="Datasets for Digital Elevation Models" href="topo.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Resilience and Heritage - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Resilience and Heritage - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Resilience and Heritage
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install Required Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="topo.html">Datasets for Digital Elevation Models</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Multispectral Satellite Imagery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gee.html">Workshop Activity</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="gainesville.html">Resilience and Heritage 2024 (Archived)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="software.html">Software for Lidar Visualization and Analysis</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pointcloud.html">Where to Access Lidar Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lidar.html">Analyzing and Visualizing Lidar Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download.html">Downloading Lidar Data</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="cloudcompare.html">Visualizing Lidar Data in Cloud Compare</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="lascolor.html">Applying RGB Colors to Point Clouds</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="sketchfab.html">Sharing Point Clouds with Sketchfab</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="potree.html">Sharing Point Clouds with Potree</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="workshop.html">Workshop Activity</a></li>
+
+
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/whitschroder/symposium/issues/new?title=Issue%20on%20page%20%2Fmultispectral.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/multispectral.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to Multispectral Satellite Imagery</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-landsat-imagery">Introduction to Landsat Imagery</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#band-compositing">Band Compositing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#band-ratios">Band Ratios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vegetation-indices-ndvi">Vegetation indices (NDVI)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-final-composite">Creating a Final Composite</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-multispectral-satellite-imagery">
+<h1>Introduction to Multispectral Satellite Imagery<a class="headerlink" href="#introduction-to-multispectral-satellite-imagery" title="Link to this heading">#</a></h1>
+<p>Free multispectral satellite imagery is available for most of the planet through the Landsat program (NASA and USGS) and the Sentinel program (European Space Agency). The spatial resolution ranges from 15-30 m in the former and 10-60 m in the latter. Data are available for download from <a class="reference external" href="https://earthexplorer.usgs.gov/">USGS Earth Explorer</a> and the <a class="reference external" href="https://browser.dataspace.copernicus.eu">Copernicus Browser</a>.</p>
+<section id="introduction-to-landsat-imagery">
+<h2>Introduction to Landsat Imagery<a class="headerlink" href="#introduction-to-landsat-imagery" title="Link to this heading">#</a></h2>
+<p>The Landsat program is a joint NASA and USGS program and the longest running satellite imagery enterprise in the U.S. and the world. The program has so far launched 9 satellites since 1972 with Landsat 1 through 2021 with Landsat 9. The spatial resolution varies from 15 to 100 m, and the temporal resolution (meaning the time it takes for the same location to be photographed) is approximately 16 days. Landsat imagery is divided into scenes each measuring approximately 185 x 185 km.</p>
+<p>The main instrument consists of a multispectral scanner that records data in separate bands. The specific wavelength ranges differ across missions, but the multispectral scanners typically record information across the visible (blue, green, red), near infrared (NIR), short wave infrared (SWIR), and thermal infrared (TIR) spectrum.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/spectrum.jpg"><img alt="Spectrum" class="bg-primary mb-1 align-center" src="_images/spectrum.jpg" style="width: 80%;" /></a>
+<p>Photo credit: <a class="reference external" href="https://commons.wikimedia.org/wiki/File%3AElectromagnetic-Spectrum.svg">Victor Blacus</a></p>
+<p>The most recent Landsat missions (7, 8, and 9) have the highest quality data. The bands and their corresponding wavelengths are shown below.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Landsat-7 ETM+ Bands (µm)</p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p>Landsat-8 OLI and <em>TIRS</em> Bands (µm)</p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p>Landsat 9 OLI and <em>TIRS-2</em> Bands (µm)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>30 m Coastal/Aerosol</p></td>
+<td><p>0.435-0.451</p></td>
+<td><p>Band 1</p></td>
+<td><p>0.433-0.453</p></td>
+</tr>
+<tr class="row-odd"><td><p>Band 1</p></td>
+<td><p>30 m Blue</p></td>
+<td><p>0.441-0.514</p></td>
+<td><p>30 m Blue</p></td>
+<td><p>0.452-0.512</p></td>
+<td><p>Band 2</p></td>
+<td><p>0.450-0.515</p></td>
+</tr>
+<tr class="row-even"><td><p>Band 2</p></td>
+<td><p>30 m Green</p></td>
+<td><p>0.519-0.601</p></td>
+<td><p>30 m Green</p></td>
+<td><p>0.533-0.590</p></td>
+<td><p>Band 3</p></td>
+<td><p>0.525-0.600</p></td>
+</tr>
+<tr class="row-odd"><td><p>Band 3</p></td>
+<td><p>30 m Red</p></td>
+<td><p>0.631-0.692</p></td>
+<td><p>30 m Red</p></td>
+<td><p>0.636-0.673</p></td>
+<td><p>Band 4</p></td>
+<td><p>0.630-0.680</p></td>
+</tr>
+<tr class="row-even"><td><p>Band 4</p></td>
+<td><p>30 m NIR</p></td>
+<td><p>0.772-0.898</p></td>
+<td><p>30 m NIR</p></td>
+<td><p>0.851-0.879</p></td>
+<td><p>Band 5</p></td>
+<td><p>0.845-0.885</p></td>
+</tr>
+<tr class="row-odd"><td><p>Band 5</p></td>
+<td><p>30 m SWIR-1</p></td>
+<td><p>1.547-1.749</p></td>
+<td><p>30 m SWIR-1</p></td>
+<td><p>1.566-1.651</p></td>
+<td><p>Band 6</p></td>
+<td><p>1.560-1.660</p></td>
+</tr>
+<tr class="row-even"><td><p>Band 6</p></td>
+<td><p>60 m TIR</p></td>
+<td><p>10.31-12.36</p></td>
+<td><p><em>100 m TIR-1</em></p></td>
+<td><p><em>10.60-11.19</em></p></td>
+<td><p>Band 10</p></td>
+<td><p><em>10.30-11.30</em></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><em>100 m TIR-2</em></p></td>
+<td><p><em>11.50-12.51</em></p></td>
+<td><p>Band 11</p></td>
+<td><p><em>11.50-12.50</em></p></td>
+</tr>
+<tr class="row-even"><td><p>Band 7</p></td>
+<td><p>30 m SWIR-2</p></td>
+<td><p>2.064-2.345</p></td>
+<td><p>30 m SWIR-2</p></td>
+<td><p>2.107-2.294</p></td>
+<td><p>Band 7</p></td>
+<td><p>2.100-2.300</p></td>
+</tr>
+<tr class="row-odd"><td><p>Band 8</p></td>
+<td><p>15 m Pan</p></td>
+<td><p>0.515-0.896</p></td>
+<td><p>15 m Pan</p></td>
+<td><p>0.503-0.676</p></td>
+<td><p>Band 8</p></td>
+<td><p>0.500-0.680</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>30 m Cirrus</p></td>
+<td><p>1.363-1.384</p></td>
+<td><p>Band 9</p></td>
+<td><p>1.360-1.390</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Earlier missions (Landsat 1-5) might be useful for historic purposes, and their bands and corresponding wavelengths are available <a class="reference external" href="https://en.wikipedia.org/wiki/Landsat_program">here</a>. The Landsat 6 mission failed to reach orbit.</p>
+<p>Landsat 8 and 9 data are delivered in a 16-bit unsigned format, while earlier Landsat imagery is delivered in an 8-bit unsigned format. To convert these digital numbers to reflectance values for subsequent analyses, refer to <a class="reference external" href="https://www.usgs.gov/faqs/how-do-i-use-a-scale-factor-landsat-level-2-science-products">scale factors</a> provided by the USGS. For Landsat 8 and 9, the scale factor is 0.0000275 with an offset of -0.2.</p>
+</section>
+<section id="band-compositing">
+<h2>Band Compositing<a class="headerlink" href="#band-compositing" title="Link to this heading">#</a></h2>
+<p>Multiband imagery can be visualized with different band combinations using the red, green, and blue additive color model. In this system, 3 bands can be viewed at one time, each displayed as red, green, or blue. A fourth channel, alpha, can be optionally blended on top of the 3 traditional bands.</p>
+<p>Band composites can be referenced with the 3 numbers each representing the relevant band, in order of red, green, or blue. The band combination 4-3-2, therefore, indicates that Band 4, Band 3, and Band 2 will be displayed as red, green, and blue, respectively. In Landsat 8 and 9, Band 4 is red, Band 3 is green, and Band 2 is blue, meaning that when displayed as 4-3-2, we are viewing the visible spectrum or true color of the image.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/rgb.jpg"><img alt="RGB" class="bg-primary mb-1 align-center" src="_images/rgb.jpg" style="width: 80%;" /></a>
+<p>Different materials, for example, vegetation, water, soil, rock, etc., reflect the electromagnetic spectrum differently. Spectral reflectance is the ratio of the amount of light reflected by a surface to the amount of light that hits it at different wavelengths. A spectral reflectance curve shows the variations in spectral reflectance across different wavelengths and materials.</p>
+<p>The following spectral reflectance curves show reflectance values for different materials at different
+wavelengths and Landsat bands (Landsat 7 above and Landsat 8 and 9 below):</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/material.png"><img alt="Reflectance1" class="bg-primary mb-1 align-center" src="_images/material.png" style="width: 80%;" /></a>
+<p>Photo credit: <a class="reference external" href="https://seos-project.eu/remotesensing/remotesensing-c01-p06.html">SEOS eLearning</a></p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/material2.png"><img alt="Reflectance2" class="bg-primary mb-1 align-center" src="_images/material2.png" style="width: 80%;" /></a>
+<p>Photo credit: <a class="reference external" href="http://dx.doi.org/10.13140/RG.2.1.2134.2249">Wulf et al. 2015</a></p>
+<p>Here are some useful band combinations in Landsat 8 and 9:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Natural Color</p></td>
+<td><p>4-3-2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Shortwave Infrared (Urban)</p></td>
+<td><p>7-6-4</p></td>
+</tr>
+<tr class="row-even"><td><p>Color Infrared (Vegetation)</p></td>
+<td><p>5-4-3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Agriculture</p></td>
+<td><p>6-5-2</p></td>
+</tr>
+<tr class="row-even"><td><p>Atmospheric Penetration</p></td>
+<td><p>7-6-5</p></td>
+</tr>
+<tr class="row-odd"><td><p>Healthy Vegetation</p></td>
+<td><p>5-6-2</p></td>
+</tr>
+<tr class="row-even"><td><p>Land/Water</p></td>
+<td><p>5-6-4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Natural with Atmospheric Removal</p></td>
+<td><p>7-5-3</p></td>
+</tr>
+<tr class="row-even"><td><p>Shortwave Infrared</p></td>
+<td><p>7-5-4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Vegetation Analysis</p></td>
+<td><p>6-5-4</p></td>
+</tr>
+<tr class="row-even"><td><p>Geology</p></td>
+<td><p>7-6-2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bathymetric</p></td>
+<td><p>4-3-1</p></td>
+</tr>
+<tr class="row-even"><td><p>Forest Fires</p></td>
+<td><p>7-5-2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bare Earth</p></td>
+<td><p>6-3-2</p></td>
+</tr>
+<tr class="row-even"><td><p>Vegetation/Water</p></td>
+<td><p>5-7-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Archaeology (Parcak/Egypt)</p></td>
+<td><p>5-4-3</p></td>
+</tr>
+<tr class="row-even"><td><p>Archaeology (Saturno/Guatemala)</p></td>
+<td><p>5-3-2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>See also: <a class="reference external" href="https://www.esri.com/arcgis-blog/products/product/imagery/band-combinations-for-landsat-8/">ESRI</a>, <a class="reference external" href="https://www.nv5geospatialsoftware.com/Learn/Blogs/Blog-Details/the-many-band-combinations-of-landsat-8">NV5</a>, <a class="reference external" href="https://gisgeography.com/landsat-8-bands-combinations/#:~:text=The%20two%20main%20sensors%20for,30%20and%2060%20meter%20resolution">GIS Geography</a>, <a class="reference external" href="https://openweather.co.uk/blog/post/satellite-imagery-landsat-8-and-its-band-combinations">Open Weather</a></p>
+<p>Here is a false color composite using Bands 5-3-2:</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/532.jpg"><img alt="5-3-2" class="bg-primary mb-1 align-center" src="_images/532.jpg" style="width: 80%;" /></a>
+</section>
+<section id="band-ratios">
+<h2>Band Ratios<a class="headerlink" href="#band-ratios" title="Link to this heading">#</a></h2>
+<p>Computing band ratios can also highlight features. Band ratios are calculated by dividing a band with a high reflectance value for a specific material by the band with a low reflectance value for that same material. In Landsat 8, the Band 5 / Band 4 ratio will highlight vegetation,
+Band 7 / Band 1 will highlight soil, and Band 1 / Band 5 or Band 2 / Band 6 will
+highlight water.</p>
+<p>Here is a ratio of Band 5 / Band 4, with vegetation on the white end of the color scheme:</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/ratio5-4.jpg"><img alt="Ratio 5-4" class="bg-primary mb-1 align-center" src="_images/ratio5-4.jpg" style="width: 80%;" /></a>
+<p>Band ratios can also eliminate issues discerning features in high shadow areas. In the following image deciduous and coniferous forest have different spectral reflectance in sunlit vs. shaded areas, but when the ratio is calculated, this discrepancy is fixed.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/material3.png"><img alt="Reflectance3" class="bg-primary mb-1 align-center" src="_images/material3.png" style="width: 80%;" /></a>
+<p>Photo credit: Middlebury Remote Sensing</p>
+</section>
+<section id="vegetation-indices-ndvi">
+<h2>Vegetation indices (NDVI)<a class="headerlink" href="#vegetation-indices-ndvi" title="Link to this heading">#</a></h2>
+<p>Building off the idea of band ratios, several indices can be calculated by performing map algebra to combine different bands. The Normalized Difference Vegetation Index (NDVI) is an example that transforms multiband data into a single raster that represents no vegetation (-1) to high vegetation (1).</p>
+<p>We can calculate the NDVI using the following formula:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{NDVI} = {\text{NIR Band 5 - Red Band 4} \over {\text{NIR Band 5 + Red Band 4}}}
+\]</div>
+<p>We can visualize the NDVI with a green color scheme.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/ndvi.jpg"><img alt="NDVI" class="bg-primary mb-1 align-center" src="_images/ndvi.jpg" style="width: 80%;" /></a>
+</section>
+<section id="creating-a-final-composite">
+<h2>Creating a Final Composite<a class="headerlink" href="#creating-a-final-composite" title="Link to this heading">#</a></h2>
+<p>Multiple bands (including any of the original bands and derivatives) can be combined into a new multiband image. Theoretically, an infinite number of bands could be combined into a composite, but researchers should select the most useful bands for their application. Although the human eye can only view 3 bands at once (with perhaps a 4th alpha channel), classification algorithms can easily work with multidimensional data.</p>
+<p>Here are some examples of multiband false color composites:</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/rgb.png"><img alt="Comparison" class="bg-primary mb-1 align-center" src="_images/rgb.png" style="width: 80%;" /></a>
+<p>True Color RGB (left) and 5-3-2 composite (right), Southeastern Chiapas, Mexico<br />
+4/3/17, 16:23:16 Landsat 8,<br />
+CORNER_UL_LAT = 16.95093<br />
+CORNER_UL_LON = -91.54527</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/pca.png"><img alt="PCA" class="bg-primary mb-1 align-center" src="_images/pca.png" style="width: 80%;" /></a>
+<p>First order Principle Components Analysis of 5-3-2 composite (left), Textural variance of PCA1 (center), NDVI (right)</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/composite.png"><img alt="Composite" class="bg-primary mb-1 align-center" src="_images/composite.png" style="width: 80%;" /></a>
+<p>Preliminary interpretation:<br />
+Final composite: Var (red)-NDVI (green)-PCA1 (blue)<br />
+Green – vegetation</p>
+<ol class="arabic simple">
+<li><p>Light green – healthy vegetation</p></li>
+<li><p>Dark green – recently burned areas</p></li>
+<li><p>Greenish white – lower vegetation</p></li>
+<li><p>Whitish green – agriculture</p></li>
+<li><p>Greenish brown – murky water
+Blue – water, urban, and bare earth</p></li>
+<li><p>Dark blue – water</p></li>
+<li><p>Bright blue – sandy beaches</p></li>
+<li><p>Blue to magenta – exposed bedrock</p></li>
+<li><p>Various shades of blue – urban and land use
+Red – shorelines and immediate land use changes</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="topo.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Datasets for Digital Elevation Models</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="gee.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Workshop Activity</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-landsat-imagery">Introduction to Landsat Imagery</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#band-compositing">Band Compositing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#band-ratios">Band Ratios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vegetation-indices-ndvi">Vegetation indices (NDVI)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-final-composite">Creating a Final Composite</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Whittaker Schroder
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

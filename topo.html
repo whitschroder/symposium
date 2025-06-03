@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Sharing Point Clouds with Sketchfab &#8212; Resilience and Heritage</title>
+    <title>Datasets for Digital Elevation Models &#8212; Resilience and Heritage</title>
   
   
   
@@ -60,11 +60,11 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'sketchfab';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'topo';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Sharing Point Clouds with Potree" href="potree.html" />
-    <link rel="prev" title="Applying RGB Colors to Point Clouds" href="lascolor.html" />
+    <link rel="next" title="Introduction to Multispectral Satellite Imagery" href="multispectral.html" />
+    <link rel="prev" title="Install Required Software" href="install.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -170,10 +170,10 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install Required Software</a></li>
-<li class="toctree-l1"><a class="reference internal" href="topo.html">Datasets for Digital Elevation Models</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Datasets for Digital Elevation Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="multispectral.html">Introduction to Multispectral Satellite Imagery</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gee.html">Workshop Activity</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="gainesville.html">Resilience and Heritage 2024 (Archived)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="gainesville.html">Resilience and Heritage 2024 (Archived)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="software.html">Software for Lidar Visualization and Analysis</a></li>
 
 
@@ -188,7 +188,7 @@
 
 <li class="toctree-l2"><a class="reference internal" href="lascolor.html">Applying RGB Colors to Point Clouds</a></li>
 
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Sharing Point Clouds with Sketchfab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sketchfab.html">Sharing Point Clouds with Sketchfab</a></li>
 
 
 
@@ -246,7 +246,7 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/whitschroder/symposium/issues/new?title=Issue%20on%20page%20%2Fsketchfab.html&body=Your%20issue%20content%20here." target="_blank"
+<a href="https://github.com/whitschroder/symposium/issues/new?title=Issue%20on%20page%20%2Ftopo.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button"
    title="Open an issue"
    data-bs-placement="bottom" data-bs-toggle="tooltip"
@@ -272,7 +272,7 @@
       
       
       
-      <li><a href="_sources/sketchfab.md" target="_blank"
+      <li><a href="_sources/topo.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -348,7 +348,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Sharing Point Clouds with Sketchfab</h1>
+    <h1>Datasets for Digital Elevation Models</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -358,12 +358,14 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Sharing Point Clouds with Sketchfab</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cedar-key">Cedar Key</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-mound">Shell Mound</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rosewood">Rosewood</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dem-vs-dsm-vs-dtm">DEM vs. DSM vs. DTM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensor-types-for-modeling-topography">Sensor Types for Modeling Topography</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#srtm">SRTM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aster">ASTER</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#airsar">AIRSAR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usgs-3d-elevation-program-3dep">USGS 3D Elevation Program (3DEP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-topography">Open Topography</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -374,40 +376,42 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="sharing-point-clouds-with-sketchfab">
-<h1>Sharing Point Clouds with Sketchfab<a class="headerlink" href="#sharing-point-clouds-with-sketchfab" title="Link to this heading">#</a></h1>
-<p>Once you have a point cloud saved locally on your computer, sharing the point cloud can be challenging.
-One option is <a class="reference external" href="https://sketchfab.com">Sketchfab</a>. Sketchfab is one of the best options for sharing
-3D models online; however, the website has several disadvantages. First, Sketchfab requires a
-subscription with different price points, each with restrictions on file sizes. Second, for point clouds,
-Sketchfab does not have many options for interacting with different visualizations. Therefore, when
-uploading a point cloud to Sketchfab, the visualization must already be saved as RGB with all other Scalar
-Fields removed.</p>
-<p>Sketchfab does not seem to support .las files. In Cloud Compare, save your point cloud as .asc. In your
-Sketchfab account, upload a new model. In the 3D Settings, change the “Background” to black and change “Shading” to “Shadeless.”</p>
-<p>Here are some examples:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="datasets-for-digital-elevation-models">
+<h1>Datasets for Digital Elevation Models<a class="headerlink" href="#datasets-for-digital-elevation-models" title="Link to this heading">#</a></h1>
+<section id="dem-vs-dsm-vs-dtm">
+<h2>DEM vs. DSM vs. DTM<a class="headerlink" href="#dem-vs-dsm-vs-dtm" title="Link to this heading">#</a></h2>
+<p>The terms digital elevation model (DEM), digital surface model (DSM), and digital terrain model (DTM) do not have consistent definitions. In some usages, DEM can refer to any raster surface that reflects height, and therefore a DSM and a DTM are a type of DEM. In other uses, DEM and DTM are synonymous and refer to only the elevation of the ground. In the United States, a DTM more often refers to a DEM that has additional data, namely vectors that mark additional data, including rivers, ridges, and breaklines. Some archaeologists have suggested using DTM to refer to a DEM that includes above ground archaeological features. The term used most consistently is DSM, which models all ground and above ground objects.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="cedar-key">
-<h1>Cedar Key<a class="headerlink" href="#cedar-key" title="Link to this heading">#</a></h1>
-<p>The colorized point cloud for Cedar Key:</p>
-<div class="sketchfab-embed-wrapper"> <iframe title="Cedar Key RGB" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/48afa85ae5d7465a990bdb0abbbe2593/embed"> </iframe> </div>
-<p>After adjusting the colors of the point cloud based on classification in Cloud Compare and uploading a new model to Sketchfab, the Cedar Key point cloud looks like this:</p>
-<div class="sketchfab-embed-wrapper"> <iframe title="Cedar Key, Florida" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/b4a408d1624b4870ac8a77a1405ba1d4/embed"> </iframe> </div>  
+<section id="sensor-types-for-modeling-topography">
+<h2>Sensor Types for Modeling Topography<a class="headerlink" href="#sensor-types-for-modeling-topography" title="Link to this heading">#</a></h2>
+<p>The most commonly used methods used for generating digital elevation models include photogrammetry, radar, and lidar. Photogrammetry (based on stereoscopy) uses cameras to take overlapping imagery that can be used to generate three dimensional models. Although accurate, photogrammetry is unable to model topography under dense vegetation. Radar uses radio waves to measure the distance between the earth’s surface and the sensor. As an active sensor, radar generates it’s own energy source, in contrast to photogrammetry (a passive technology) that records the reflected energy from the sun. Therefore, radar can be used during the day or night. Although better able to penetrate vegetation compared to photogrammetry, radar is still unable to model the ground’s surface in areas of dense vegetation or steep topography. Finally, lidar has emerged as a common technology for topographic modeling, especially in documenting archaeological and cultural landscapes. Lidar is also an active sensor that sends pulses of light and measures the time and distance traveled between pulses and returns. Most of these returns reflect off vegetation and above ground objects, but some pulses are able to reach the ground, allowing for the highest resolution and most accurate modeling of the ground’s surface.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="shell-mound">
-<h1>Shell Mound<a class="headerlink" href="#shell-mound" title="Link to this heading">#</a></h1>
-<p>The colorized point cloud for Shell Mound:</p>
-<div class="sketchfab-embed-wrapper"> <iframe title="Shell Mound RGB" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/c41b0a119caf477790f3311cb143a8b1/embed"> </iframe> </div>
-<p>The Shell Mound data are in a more forested area with fewer buildings:</p>
-<div class="sketchfab-embed-wrapper"> <iframe title="Shell Mound, Florida" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/6c6cb8086e684cf48298391e08f7dfb3/embed"> </iframe> </div>  
-<p>We can filter out the trees, creating a digital terrain model or bare earth surface, and we can color the points based on ground elevation.</p>
-<div class="sketchfab-embed-wrapper"> <iframe title="Shell Mound Terrain" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/38a3e58c855a4d6eb2d58ba361f2c31e/embed"> </iframe> </div>  
+<section id="srtm">
+<h2>SRTM<a class="headerlink" href="#srtm" title="Link to this heading">#</a></h2>
+<p>The Shuttle Radar Topography Mission (SRTM) used two radar antennae mounted on the Space Shuttle Endeavour in 2000 to produce the first near global DEM, specifically 80% of the Earth’s land surface between 60° north and 56° south latitude. Although radar can penetrate vegetation, results can be poor in densely forested areas and rugged terrain.</p>
+<p>SRTM data are available in three formats:</p>
+<p><b>SRTM Non-Void Filled</b> elevation data contains voids from densely forested areas and rugged terrain at a resolution of 1-arc second (approximately 30 m at the equator) in the United States and 3-arc seconds (approximately 90 m at the equator) outside the United States.</p>
+<p><b>SRTM Void Filled</b> elevation data combined interpolation and other data sources to fill voids. The resolution is 1-arc second (approximately 30 m at the equator) in the United States and 3-arc seconds (approximately 90 m at the equator) outside the United States.</p>
+<p><b>SRTM 1 Arc-Second Global</b> is a near-global dataset with improved resolution of 1-arc second (approximately 30 m at the equator), except for areas above 50° north and below 50° south latitude, which were sampled at a resolution of 1-arc second by 2-arc seconds. Some voids may still be present.</p>
+<p>SRTM data are available through the <a class="reference external" href="https://earthexplorer.usgs.gov/">USGS Earth Explorer</a>.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="rosewood">
-<h1>Rosewood<a class="headerlink" href="#rosewood" title="Link to this heading">#</a></h1>
-<p>Here are the point cloud data for Rosewood. What are some other ways to visualize the data?</p>
-<div class="sketchfab-embed-wrapper"> <iframe title="Rosewood RGB" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/12d645f7be204ac7b5ac2a301ec78267/embed"> </iframe> </div>
-<div class="sketchfab-embed-wrapper"> <iframe title="Rosewood, Florida" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/50dec59c9a1642e8a10be4d5a59e38d6/embed"> </iframe> </div>
+<section id="aster">
+<h2>ASTER<a class="headerlink" href="#aster" title="Link to this heading">#</a></h2>
+<p>The Advanced Spaceborne Thermal Emission and Reflection Radiometer (ASTER) was a Japanese multispectral sensor mounted on NASA’s Terra satellite in 1999. Stereo imagery was processed to generate the first version of the ASTER Global Digital Elevation Model (GDEM), perhaps more appropriately called a DSM, covering 99% of the Earth’s land surface between 83° north and 83° south latitude. The third version of the GDEM was released in 2019 with significant improvements, removing above ground artifacts.</p>
+<p>ASTER data are no longer available through the USGS Earth Explorer and can instead be downloaded from <a class="reference external" href="https://search.earthdata.nasa.gov/search">NASA Earth Data Search</a>.</p>
+</section>
+<section id="airsar">
+<h2>AIRSAR<a class="headerlink" href="#airsar" title="Link to this heading">#</a></h2>
+<p>A product of the Jet Propulsion Laboratory (JPL), the Airborne Synthetic Aperture Radar (AIRSAR) instrument was an airborne system that operated from 1988 to 2004, collecting limited data over selected study regions, at approximately 5 m resolution. AIRSAR data can be browsed through a list of <a class="reference external" href="https://airsar.jpl.nasa.gov/cgi-bin/internet.plex">missions</a> a search for <a class="reference external" href="https://airsar.jpl.nasa.gov/cgi-bin/search.plex">precision data</a>, and an <a class="reference external" href="https://airsar.jpl.nasa.gov/cgi-bin/map.pl">interactive map</a>.</p>
+</section>
+<section id="usgs-3d-elevation-program-3dep">
+<h2>USGS 3D Elevation Program (3DEP)<a class="headerlink" href="#usgs-3d-elevation-program-3dep" title="Link to this heading">#</a></h2>
+<p>Near nationwide digital elevation models for the U.S. are available at the <a class="reference external" href="https://apps.nationalmap.gov/downloader/">National Map</a>. Data are available at 1 m, 5 m, 10 m, and 30 m resolution.</p>
+</section>
+<section id="open-topography">
+<h2>Open Topography<a class="headerlink" href="#open-topography" title="Link to this heading">#</a></h2>
+<p>Additional topographic data may be available at <a class="reference external" href="https://opentopography.org/">Open Topography</a>. This website provides convenient links to available USGS and user-submitted data.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -441,20 +445,20 @@ Sketchfab account, upload a new model. In the 3D Settings, change the “Backgro
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="lascolor.html"
+       href="install.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Applying RGB Colors to Point Clouds</p>
+        <p class="prev-next-title">Install Required Software</p>
       </div>
     </a>
     <a class="right-next"
-       href="potree.html"
+       href="multispectral.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Sharing Point Clouds with Potree</p>
+        <p class="prev-next-title">Introduction to Multispectral Satellite Imagery</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -475,12 +479,14 @@ Sketchfab account, upload a new model. In the 3D Settings, change the “Backgro
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Sharing Point Clouds with Sketchfab</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cedar-key">Cedar Key</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-mound">Shell Mound</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rosewood">Rosewood</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dem-vs-dsm-vs-dtm">DEM vs. DSM vs. DTM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensor-types-for-modeling-topography">Sensor Types for Modeling Topography</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#srtm">SRTM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aster">ASTER</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#airsar">AIRSAR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usgs-3d-elevation-program-3dep">USGS 3D Elevation Program (3DEP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-topography">Open Topography</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

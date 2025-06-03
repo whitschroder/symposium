@@ -6,7 +6,7 @@ After creating your Google Earth Engine account, go to <https://code.earthengine
 
 ## Import Data
 
-The first step is to define a region. The simplest approach is to use the tools in the map area to create a marker (point). This marker will appear in the Imports section at the top of the script as a variable called geometry. Change the name of this variable to point. Next, we will import Landsat 8 imagery. Under Search places and datasets..., type Landsat 8, and select USGS Landsat 8 Level 2, Collection 2, Tier 1 and click the Import button. Change the name of the variable under Imports to ls8_sr. We can also import elevation data. Search for SRTM, and import NASA SRTM Digital Elevation 30m. Rename this variable to srtm.
+The first step is to define a region. The simplest approach is to use the tools in the map area to create a marker (point). This marker will appear in the Imports section at the top of the script as a variable called geometry. Change the name of this variable to point. Optionally, you can create a rectangle or polygon to define your area of interest, which you can later use to clip your data (change the name of this variable to poly). Next, we will import Landsat 8 imagery. Under Search places and datasets..., type Landsat 8, and select USGS Landsat 8 Level 2, Collection 2, Tier 1 and click the Import button. Change the name of the variable under Imports to ls8_sr. We can also import elevation data. Search for SRTM, and import NASA SRTM Digital Elevation 30m. Rename this variable to srtm.
 
 The following code will center the map over your point when the code is run.
 
@@ -18,6 +18,14 @@ Now we can add the SRTM to the map.
 
 ```JavaScript
 Map.addLayer(srtm, {min:0, max:3000}, 'SRTM DEM');
+```
+
+Alternatively, we can clip to our region of interest if defined as a polygon:
+
+```JavaScript
+var srtm_clip = srtm.clip(poly);
+
+Map.addLayer(srtm_clip, {min:2250, max:3000}, 'SRTM DEM');
 ```
 
 ## Generate a Cloud Free Composite
@@ -36,7 +44,7 @@ Imagery will now be filtered to dates within the year 2023 with less than 30% cl
 ```JavaScript
 var ls8filtered = ls8_sr
   .filterDate(start,end)
-  .filterBounds(point)
+  .filterBounds(poly)
   .filterMetadata('CLOUD_COVER','less_than',cloud_max);
 ```
 
@@ -82,8 +90,28 @@ Finally, we can display the filtered, masked, and rescaled imagery. Defining the
 
 ```JavaScript
 //create LS8 median composite and display
-var composite= LS8_masked.median();
+var composite = LS8_masked.median();
 Map.addLayer(composite, {bands: ['B4', 'B3', 'B2'], min: 0, max: 0.15}, 'Landsat 8 composite');
+```
+
+## Visualizing False Color Composites
+
+We can visualize any combination of bands in a similar fashion by defining a new variable with our chosen band composite. The following code will display a color infrared composite:
+
+```JavaScript
+Map.addLayer(composite, {bands: ['B5', 'B3', 'B2'], min: 0, max: 0.15}, 'Landsat 8 false color composite');
+```
+
+## Band Ratios
+
+We can use simple map algebra to display band ratios in Google Earth Engine. The following code divides Band 4 from Band 5 and displays the result.
+
+```JavaScript
+var b5 = composite.select("B5");
+var b4 = composite.select("B4");
+var b5divb4 = b5.divide(b4).rename('B5/B4');
+
+Map.addLayer(b5divb4, {min:0, max:1, palette: ["white", "green"]} , "NDVI");
 ```
 
 ## Calculate NDVI

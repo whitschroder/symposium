@@ -63,8 +63,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'gee';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Resilience and Heritage 2024" href="gainesville.html" />
-    <link rel="prev" title="Resilience and Heritage" href="intro.html" />
+    <link rel="next" title="Resilience and Heritage 2024 (Archived)" href="gainesville.html" />
+    <link rel="prev" title="Introduction to Multispectral Satellite Imagery" href="multispectral.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -169,8 +169,11 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install Required Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="topo.html">Datasets for Digital Elevation Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multispectral.html">Introduction to Multispectral Satellite Imagery</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Workshop Activity</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="gainesville.html">Resilience and Heritage 2024</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="gainesville.html">Resilience and Heritage 2024 (Archived)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="software.html">Software for Lidar Visualization and Analysis</a></li>
 
 
@@ -357,6 +360,8 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-data">Import Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-a-cloud-free-composite">Generate a Cloud Free Composite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-false-color-composites">Visualizing False Color Composites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#band-ratios">Band Ratios</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-ndvi">Calculate NDVI</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-land-cover-classification">Supervised Land Cover Classification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#export-imagery">Export Imagery</a></li>
@@ -379,13 +384,19 @@
 <p>After creating your Google Earth Engine account, go to <a class="reference external" href="https://code.earthengine.google.com">https://code.earthengine.google.com</a>. Then, create a new script.</p>
 <section id="import-data">
 <h2>Import Data<a class="headerlink" href="#import-data" title="Link to this heading">#</a></h2>
-<p>The first step is to define a region. The simplest approach is to use the tools in the map area to create a marker (point). This marker will appear in the Imports section at the top of the script as a variable called geometry. Change the name of this variable to point. Next, we will import Landsat 8 imagery. Under Search places and datasets…, type Landsat 8, and select USGS Landsat 8 Level 2, Collection 2, Tier 1 and click the Import button. Change the name of the variable under Imports to ls8_sr. We can also import elevation data. Search for SRTM, and import NASA SRTM Digital Elevation 30m. Rename this variable to srtm.</p>
+<p>The first step is to define a region. The simplest approach is to use the tools in the map area to create a marker (point). This marker will appear in the Imports section at the top of the script as a variable called geometry. Change the name of this variable to point. Optionally, you can create a rectangle or polygon to define your area of interest, which you can later use to clip your data (change the name of this variable to poly). Next, we will import Landsat 8 imagery. Under Search places and datasets…, type Landsat 8, and select USGS Landsat 8 Level 2, Collection 2, Tier 1 and click the Import button. Change the name of the variable under Imports to ls8_sr. We can also import elevation data. Search for SRTM, and import NASA SRTM Digital Elevation 30m. Rename this variable to srtm.</p>
 <p>The following code will center the map over your point when the code is run.</p>
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="nb">Map</span><span class="p">.</span><span class="nx">centerObject</span><span class="p">(</span><span class="nx">point</span><span class="p">,</span><span class="w"> </span><span class="mf">7</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Now we can add the SRTM to the map.</p>
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">srtm</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">min</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="mf">3000</span><span class="p">},</span><span class="w"> </span><span class="s1">&#39;SRTM DEM&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Alternatively, we can clip to our region of interest if defined as a polygon:</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">srtm_clip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">srtm</span><span class="p">.</span><span class="nx">clip</span><span class="p">(</span><span class="nx">poly</span><span class="p">);</span>
+
+<span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">srtm_clip</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">min</span><span class="o">:</span><span class="mf">2250</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="mf">3000</span><span class="p">},</span><span class="w"> </span><span class="s1">&#39;SRTM DEM&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
@@ -401,7 +412,7 @@
 <p>Imagery will now be filtered to dates within the year 2023 with less than 30% cloud cover using the following code.</p>
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">ls8filtered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ls8_sr</span>
 <span class="w">  </span><span class="p">.</span><span class="nx">filterDate</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span><span class="nx">end</span><span class="p">)</span>
-<span class="w">  </span><span class="p">.</span><span class="nx">filterBounds</span><span class="p">(</span><span class="nx">point</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">filterBounds</span><span class="p">(</span><span class="nx">poly</span><span class="p">)</span>
 <span class="w">  </span><span class="p">.</span><span class="nx">filterMetadata</span><span class="p">(</span><span class="s1">&#39;CLOUD_COVER&#39;</span><span class="p">,</span><span class="s1">&#39;less_than&#39;</span><span class="p">,</span><span class="nx">cloud_max</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -441,8 +452,26 @@
 </div>
 <p>Finally, we can display the filtered, masked, and rescaled imagery. Defining the bands as B4, B3, B2 creates a true color composite.</p>
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="c1">//create LS8 median composite and display</span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">composite</span><span class="o">=</span><span class="w"> </span><span class="nx">LS8_masked</span><span class="p">.</span><span class="nx">median</span><span class="p">();</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">composite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">LS8_masked</span><span class="p">.</span><span class="nx">median</span><span class="p">();</span>
 <span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">composite</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">bands</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B3&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B2&#39;</span><span class="p">],</span><span class="w"> </span><span class="nx">min</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">0.15</span><span class="p">},</span><span class="w"> </span><span class="s1">&#39;Landsat 8 composite&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="visualizing-false-color-composites">
+<h2>Visualizing False Color Composites<a class="headerlink" href="#visualizing-false-color-composites" title="Link to this heading">#</a></h2>
+<p>We can visualize any combination of bands in a similar fashion by defining a new variable with our chosen band composite. The following code will display a color infrared composite:</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">composite</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">bands</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;B5&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B3&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B2&#39;</span><span class="p">],</span><span class="w"> </span><span class="nx">min</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">0.15</span><span class="p">},</span><span class="w"> </span><span class="s1">&#39;Landsat 8 false color composite&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="band-ratios">
+<h2>Band Ratios<a class="headerlink" href="#band-ratios" title="Link to this heading">#</a></h2>
+<p>We can use simple map algebra to display band ratios in Google Earth Engine. The following code divides Band 4 from Band 5 and displays the result.</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">b5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">composite</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;B5&quot;</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">b4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">composite</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;B4&quot;</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">b5divb4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">b5</span><span class="p">.</span><span class="nx">divide</span><span class="p">(</span><span class="nx">b4</span><span class="p">).</span><span class="nx">rename</span><span class="p">(</span><span class="s1">&#39;B5/B4&#39;</span><span class="p">);</span>
+
+<span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">b5divb4</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">min</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">palette</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;white&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;green&quot;</span><span class="p">]}</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;NDVI&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
@@ -598,12 +627,12 @@ Multisensor and Multitemporal Satellite Data. PNAS 117(31):18240-18250.
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="multispectral.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Resilience and Heritage</p>
+        <p class="prev-next-title">Introduction to Multispectral Satellite Imagery</p>
       </div>
     </a>
     <a class="right-next"
@@ -611,7 +640,7 @@ Multisensor and Multitemporal Satellite Data. PNAS 117(31):18240-18250.
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Resilience and Heritage 2024</p>
+        <p class="prev-next-title">Resilience and Heritage 2024 (Archived)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -634,6 +663,8 @@ Multisensor and Multitemporal Satellite Data. PNAS 117(31):18240-18250.
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-data">Import Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-a-cloud-free-composite">Generate a Cloud Free Composite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-false-color-composites">Visualizing False Color Composites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#band-ratios">Band Ratios</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-ndvi">Calculate NDVI</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-land-cover-classification">Supervised Land Cover Classification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#export-imagery">Export Imagery</a></li>
