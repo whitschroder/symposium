@@ -358,9 +358,9 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-data">Import Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-landsat-data">Import Landsat Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-a-cloud-free-composite">Generate a Cloud Free Composite</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-false-color-composites">Visualizing False Color Composites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-sentinel-data">Import Sentinel Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#band-ratios">Band Ratios</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-ndvi">Calculate NDVI</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-land-cover-classification">Supervised Land Cover Classification</a></li>
@@ -382,8 +382,8 @@
 <h1>Workshop Activity<a class="headerlink" href="#workshop-activity" title="Link to this heading">#</a></h1>
 <p>Google Earth Engine provides an interface to process large amounts of spatial imagery with a few lines of code. Rather than searching for and downloading many raster files, Google Earth Engine processes imagery in the cloud. In this lab, students will learn how to conduct a supervised land classification in Google Earth Engine using JavaScript.</p>
 <p>After creating your Google Earth Engine account, go to <a class="reference external" href="https://code.earthengine.google.com">https://code.earthengine.google.com</a>. Then, create a new script.</p>
-<section id="import-data">
-<h2>Import Data<a class="headerlink" href="#import-data" title="Link to this heading">#</a></h2>
+<section id="import-landsat-data">
+<h2>Import Landsat Data<a class="headerlink" href="#import-landsat-data" title="Link to this heading">#</a></h2>
 <p>The first step is to define a region. The simplest approach is to use the tools in the map area to create a marker (point). This marker will appear in the Imports section at the top of the script as a variable called geometry. Change the name of this variable to point. Optionally, you can create a rectangle or polygon to define your area of interest, which you can later use to clip your data (change the name of this variable to poly). Next, we will import Landsat 8 imagery. Under Search places and datasets…, type Landsat 8, and select USGS Landsat 8 Level 2, Collection 2, Tier 1 and click the Import button. Change the name of the variable under Imports to ls8_sr. We can also import elevation data. Search for SRTM, and import NASA SRTM Digital Elevation 30m. Rename this variable to srtm.</p>
 <p>The following code will center the map over your point when the code is run.</p>
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="nb">Map</span><span class="p">.</span><span class="nx">centerObject</span><span class="p">(</span><span class="nx">point</span><span class="p">,</span><span class="w"> </span><span class="mf">7</span><span class="p">);</span>
@@ -399,6 +399,11 @@
 <span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">srtm_clip</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">min</span><span class="o">:</span><span class="mf">2250</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="mf">3000</span><span class="p">},</span><span class="w"> </span><span class="s1">&#39;SRTM DEM&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+<p>We can create and view a hillshade of the same elevation surface:</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">hillshade</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ee</span><span class="p">.</span><span class="nx">Terrain</span><span class="p">.</span><span class="nx">hillshade</span><span class="p">(</span><span class="nx">srtm_clip</span><span class="p">,</span><span class="w"> </span><span class="mf">315</span><span class="p">,</span><span class="w"> </span><span class="mf">45</span><span class="p">);</span>
+<span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">hillshade</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Hillshade&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
 </section>
 <section id="generate-a-cloud-free-composite">
 <h2>Generate a Cloud Free Composite<a class="headerlink" href="#generate-a-cloud-free-composite" title="Link to this heading">#</a></h2>
@@ -406,10 +411,10 @@
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;2023-01-01&#39;</span><span class="p">;</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;2023-12-31&#39;</span><span class="p">;</span>
 
-<span class="kd">var</span><span class="w"> </span><span class="nx">cloud_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">30</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">cloud_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">50</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>Imagery will now be filtered to dates within the year 2023 with less than 30% cloud cover using the following code.</p>
+<p>Imagery will now be filtered to dates within the year 2023 with less than 50% cloud cover using the following code.</p>
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">ls8filtered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ls8_sr</span>
 <span class="w">  </span><span class="p">.</span><span class="nx">filterDate</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span><span class="nx">end</span><span class="p">)</span>
 <span class="w">  </span><span class="p">.</span><span class="nx">filterBounds</span><span class="p">(</span><span class="nx">poly</span><span class="p">)</span>
@@ -452,15 +457,35 @@
 </div>
 <p>Finally, we can display the filtered, masked, and rescaled imagery. Defining the bands as B4, B3, B2 creates a true color composite.</p>
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="c1">//create LS8 median composite and display</span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">composite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">LS8_masked</span><span class="p">.</span><span class="nx">median</span><span class="p">();</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">composite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">LS8_masked</span><span class="p">.</span><span class="nx">median</span><span class="p">().</span><span class="nx">clip</span><span class="p">(</span><span class="nx">poly</span><span class="p">);</span>
 <span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">composite</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">bands</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B3&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B2&#39;</span><span class="p">],</span><span class="w"> </span><span class="nx">min</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">0.15</span><span class="p">},</span><span class="w"> </span><span class="s1">&#39;Landsat 8 composite&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
-<section id="visualizing-false-color-composites">
-<h2>Visualizing False Color Composites<a class="headerlink" href="#visualizing-false-color-composites" title="Link to this heading">#</a></h2>
-<p>We can visualize any combination of bands in a similar fashion by defining a new variable with our chosen band composite. The following code will display a color infrared composite:</p>
-<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">composite</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">bands</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;B5&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B3&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B2&#39;</span><span class="p">],</span><span class="w"> </span><span class="nx">min</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">0.15</span><span class="p">},</span><span class="w"> </span><span class="s1">&#39;Landsat 8 false color composite&#39;</span><span class="p">);</span>
+<section id="import-sentinel-data">
+<h2>Import Sentinel Data<a class="headerlink" href="#import-sentinel-data" title="Link to this heading">#</a></h2>
+<p>The process for importing Sentinel data is similar to importing Landsat data, but some of the metadata are labeled differently. First, import Harmonized Sentinel-2 MSI: MultiSpectral Instrument, Level-2A (SR), and rename as sentinel.</p>
+<p>To create a cloud free composite:</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">S2_filtered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sentinel</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">filterDate</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span><span class="nx">end</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">filterBounds</span><span class="p">(</span><span class="nx">poly</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">filterMetadata</span><span class="p">(</span><span class="s1">&#39;CLOUDY_PIXEL_PERCENTAGE&#39;</span><span class="p">,</span><span class="s1">&#39;less_than&#39;</span><span class="p">,</span><span class="nx">cloud_max</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">maskS2clouds</span><span class="p">);</span>
+<span class="w">  </span>
+<span class="nx">print</span><span class="p">(</span><span class="nx">S2_filtered</span><span class="p">);</span>
+
+<span class="c1">//create Sentinel-2 median composite and display</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">composite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">S2_filtered</span><span class="p">.</span><span class="nx">median</span><span class="p">().</span><span class="nx">clip</span><span class="p">(</span><span class="nx">poly</span><span class="p">);</span>
+<span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">composite</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">bands</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B3&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B2&#39;</span><span class="p">],</span><span class="w"> </span><span class="nx">min</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">0.15</span><span class="p">},</span><span class="w"> </span><span class="s1">&#39;Sentinel 2 composite&#39;</span><span class="p">);</span>
+
+<span class="nx">The</span><span class="w"> </span><span class="nx">following</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="nx">will</span><span class="w"> </span><span class="nx">pertain</span><span class="w"> </span><span class="nx">only</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">Landsat</span><span class="p">,</span><span class="w"> </span><span class="nx">but</span><span class="w"> </span><span class="nx">refer</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="p">[</span><span class="nx">band</span><span class="w"> </span><span class="nx">combinations</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">Sentinel</span><span class="o">-</span><span class="mf">2</span><span class="p">](</span><span class="nx">https</span><span class="o">:</span><span class="c1">//developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED#bands) if you choose to use Sentinel-2 data.</span>
+
+<span class="err">##</span><span class="w"> </span><span class="nx">Visualizing</span><span class="w"> </span><span class="nx">False</span><span class="w"> </span><span class="nx">Color</span><span class="w"> </span><span class="nx">Composites</span>
+
+<span class="nx">We</span><span class="w"> </span><span class="nx">can</span><span class="w"> </span><span class="nx">visualize</span><span class="w"> </span><span class="nx">any</span><span class="w"> </span><span class="nx">combination</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">bands</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">similar</span><span class="w"> </span><span class="nx">fashion</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">defining</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">variable</span><span class="w"> </span><span class="kd">with</span><span class="w"> </span><span class="nx">our</span><span class="w"> </span><span class="nx">chosen</span><span class="w"> </span><span class="nx">band</span><span class="w"> </span><span class="nx">composite</span><span class="p">.</span><span class="w"> </span><span class="nx">The</span><span class="w"> </span><span class="nx">following</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="nx">will</span><span class="w"> </span><span class="nx">display</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">color</span><span class="w"> </span><span class="nx">infrared</span><span class="w"> </span><span class="nx">composite</span><span class="o">:</span>
+
+<span class="sb">```JavaScript</span>
+<span class="sb">Map.addLayer(composite, {bands: [&#39;B5&#39;, &#39;B3&#39;, &#39;B2&#39;], min: 0, max: 0.15}, &#39;Landsat 8 false color composite&#39;);</span>
 </pre></div>
 </div>
 </section>
@@ -577,6 +602,7 @@
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<p>Alders, W., Davis, D.S. &amp; Haines, J.J. 2024. Archaeology in the Fourth Dimension: Studying Landscapes with Multitemporal PlanetScope Satellite Data. Journal of Archaeological Method and Theory 31:1588–1621. <a class="reference external" href="https://doi.org/10.1007/s10816-024-09644-x">https://doi.org/10.1007/s10816-024-09644-x</a></p>
 <p>Alcover Firpi, Omar A. 2016. Satellite Data for All? Review of Google Earth Engine
 for Archaeological Remote Sensing. Internet Archaeology 42.
 <a class="reference external" href="https://doi.org/10.11141/ia.42.10">https://doi.org/10.11141/ia.42.10</a></p>
@@ -588,11 +614,6 @@ Science: Reports 50:104094. <a class="reference external" href="https://doi.org/
 <p>Orengo, H.A., A. Garcia-Molsosa. 2019. A Brave New World for Archaeological Survey:
 Automated Machine Learning-Based Potsherd Detection Using High-Resolution Drone Imagery.
 Journal of Archaeological Science 112: 105013. <a class="reference external" href="https://doi.org/10.1016/j.jas.2019.105013">https://doi.org/10.1016/j.jas.2019.105013</a></p>
-<p>Orengo, H.A., Francesc C. Conesa, Arnau Garcia-Molsosa, and Cameron A. Petrie. 2020.
-Automated Detection of Archaeological Mounds Using Machine-Learning Classification of
-Multisensor and Multitemporal Satellite Data. PNAS 117(31):18240-18250.
-<a class="reference external" href="https://doi.org/10.1073/pnas.2005583117">https://doi.org/10.1073/pnas.2005583117</a></p>
-<p>Orengo, H.A. and Cameron A. Petrie. 2017. Multi-scale relief model (MSRM): a new algorithm for the visualization of subtle topographic change of variable size in digital elevation models. Earth Surface Processes and Landforms 43(6):1361-1369. <a class="reference external" href="https://doi.org/10.1002/esp.4317">https://doi.org/10.1002/esp.4317</a></p>
 </section>
 </section>
 
@@ -661,9 +682,9 @@ Multisensor and Multitemporal Satellite Data. PNAS 117(31):18240-18250.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-data">Import Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-landsat-data">Import Landsat Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-a-cloud-free-composite">Generate a Cloud Free Composite</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-false-color-composites">Visualizing False Color Composites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-sentinel-data">Import Sentinel Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#band-ratios">Band Ratios</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-ndvi">Calculate NDVI</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-land-cover-classification">Supervised Land Cover Classification</a></li>

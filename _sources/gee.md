@@ -4,7 +4,7 @@ Google Earth Engine provides an interface to process large amounts of spatial im
 
 After creating your Google Earth Engine account, go to <https://code.earthengine.google.com>. Then, create a new script.
 
-## Import Data
+## Import Landsat Data
 
 The first step is to define a region. The simplest approach is to use the tools in the map area to create a marker (point). This marker will appear in the Imports section at the top of the script as a variable called geometry. Change the name of this variable to point. Optionally, you can create a rectangle or polygon to define your area of interest, which you can later use to clip your data (change the name of this variable to poly). Next, we will import Landsat 8 imagery. Under Search places and datasets..., type Landsat 8, and select USGS Landsat 8 Level 2, Collection 2, Tier 1 and click the Import button. Change the name of the variable under Imports to ls8_sr. We can also import elevation data. Search for SRTM, and import NASA SRTM Digital Elevation 30m. Rename this variable to srtm.
 
@@ -28,6 +28,13 @@ var srtm_clip = srtm.clip(poly);
 Map.addLayer(srtm_clip, {min:2250, max:3000}, 'SRTM DEM');
 ```
 
+We can create and view a hillshade of the same elevation surface:
+
+```JavaScript
+var hillshade = ee.Terrain.hillshade(srtm_clip, 315, 45);
+Map.addLayer(hillshade, null, 'Hillshade');
+```
+
 ## Generate a Cloud Free Composite
 
 Next we will define some variables, including a date range and amount of cloud cover.
@@ -36,10 +43,10 @@ Next we will define some variables, including a date range and amount of cloud c
 var start = '2023-01-01';
 var end = '2023-12-31';
 
-var cloud_max = 30;
+var cloud_max = 50;
 ```
 
-Imagery will now be filtered to dates within the year 2023 with less than 30% cloud cover using the following code.
+Imagery will now be filtered to dates within the year 2023 with less than 50% cloud cover using the following code.
 
 ```JavaScript
 var ls8filtered = ls8_sr
@@ -90,9 +97,30 @@ Finally, we can display the filtered, masked, and rescaled imagery. Defining the
 
 ```JavaScript
 //create LS8 median composite and display
-var composite = LS8_masked.median();
+var composite = LS8_masked.median().clip(poly);
 Map.addLayer(composite, {bands: ['B4', 'B3', 'B2'], min: 0, max: 0.15}, 'Landsat 8 composite');
 ```
+
+## Import Sentinel Data
+
+The process for importing Sentinel data is similar to importing Landsat data, but some of the metadata are labeled differently. First, import Harmonized Sentinel-2 MSI: MultiSpectral Instrument, Level-2A (SR), and rename as sentinel.
+
+To create a cloud free composite:
+
+```JavaScript
+var S2_filtered = sentinel
+  .filterDate(start,end)
+  .filterBounds(poly)
+  .filterMetadata('CLOUDY_PIXEL_PERCENTAGE','less_than',cloud_max)
+  .map(maskS2clouds);
+  
+print(S2_filtered);
+
+//create Sentinel-2 median composite and display
+var composite = S2_filtered.median().clip(poly);
+Map.addLayer(composite, {bands: ['B4', 'B3', 'B2'], min: 0, max: 0.15}, 'Sentinel 2 composite');
+
+The following code will pertain only to Landsat, but refer to the [band combinations for Sentinel-2](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED#bands) if you choose to use Sentinel-2 data.
 
 ## Visualizing False Color Composites
 
@@ -229,6 +257,8 @@ To develop more skills in Google Earth Engine, additional code is available at t
 
 ## References
 
+Alders, W., Davis, D.S. & Haines, J.J. 2024. Archaeology in the Fourth Dimension: Studying Landscapes with Multitemporal PlanetScope Satellite Data. Journal of Archaeological Method and Theory 31:1588–1621. <https://doi.org/10.1007/s10816-024-09644-x>
+
 Alcover Firpi, Omar A. 2016. Satellite Data for All? Review of Google Earth Engine 
 for Archaeological Remote Sensing. Internet Archaeology 42. 
 <https://doi.org/10.11141/ia.42.10>
@@ -242,10 +272,3 @@ Science: Reports 50:104094. <https://doi.org/10.1016/j.jasrep.2023.104094>
 Orengo, H.A., A. Garcia-Molsosa. 2019. A Brave New World for Archaeological Survey:
 Automated Machine Learning-Based Potsherd Detection Using High-Resolution Drone Imagery. 
 Journal of Archaeological Science 112: 105013. <https://doi.org/10.1016/j.jas.2019.105013>
-
-Orengo, H.A., Francesc C. Conesa, Arnau Garcia-Molsosa, and Cameron A. Petrie. 2020.
-Automated Detection of Archaeological Mounds Using Machine-Learning Classification of 
-Multisensor and Multitemporal Satellite Data. PNAS 117(31):18240-18250.
-<https://doi.org/10.1073/pnas.2005583117>
-
-Orengo, H.A. and Cameron A. Petrie. 2017. Multi-scale relief model (MSRM): a new algorithm for the visualization of subtle topographic change of variable size in digital elevation models. Earth Surface Processes and Landforms 43(6):1361-1369. <https://doi.org/10.1002/esp.4317>
