@@ -131,8 +131,8 @@ var S2_filtered = sentinel
 print(S2_filtered);
 
 //create Sentinel-2 median composite and display
-var composite = S2_filtered.median().clip(poly);
-Map.addLayer(composite, {bands: ['B4', 'B3', 'B2'], min: 0, max: 0.15}, 'Sentinel 2 composite');
+var S2composite = S2_filtered.median().clip(poly);
+Map.addLayer(S2composite, {bands: ['B4', 'B3', 'B2'], min: 0, max: 0.15}, 'Sentinel 2 composite');
 ```
 
 The code in the following sections will pertain only to Landsat, but refer to the [band combinations for Sentinel-2](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED#bands) if you choose to use Sentinel-2 data.
