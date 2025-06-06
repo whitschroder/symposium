@@ -108,6 +108,20 @@ The process for importing Sentinel data is similar to importing Landsat data, bu
 To create a cloud free composite:
 
 ```JavaScript
+function maskS2clouds(image) {
+  var qa = image.select('QA60');
+
+  // Bits 10 and 11 are clouds and cirrus, respectively.
+  var cloudBitMask = 1 << 10;
+  var cirrusBitMask = 1 << 11;
+
+  // Both flags should be set to zero, indicating clear conditions.
+  var mask = qa.bitwiseAnd(cloudBitMask).eq(0)
+      .and(qa.bitwiseAnd(cirrusBitMask).eq(0));
+
+  return image.updateMask(mask).divide(10000);
+}
+
 var S2_filtered = sentinel
   .filterDate(start,end)
   .filterBounds(poly)
