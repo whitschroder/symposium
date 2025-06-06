@@ -173,14 +173,14 @@ Map.addLayer(ndvi, {min:0, max:1, palette: ["white", "green"]} , "NDVI");
 
 We will now conduct a supervised land cover classification using the Landsat 8 composite, SRTM DEM, and NDVI.
 
-In a similar fashion to how the study area was defined with a point, we can define training polygons by selecting Draw a shape or Draw a rectangle in the lower map section. We will define 4 land cover classes: forest, cultivated, urban, and water. In the map section add a new layer for each of these classes and choose a suitable color. Import as a FeatureCollection and add a property called landcover. Assign forest a landcover value of 0, cultivated 1, urban 2, and water 3.
+In a similar fashion to how the study area was defined with a point, we can define training polygons by selecting Draw a shape or Draw a rectangle in the lower map section. We will define 4 land cover classes: forest, cultivated, urban, and water. In the map section add a new layer for each of these classes and choose a suitable color. Import as a FeatureCollection and add a property called landcover. Assign forest a landcover value of 0, cultivated 1, urban 2, water 3, and grassland 4.
 
 We will now merge these polygons.
 
 ```JavaScript
 //Create training polygons
 
-var polygons = forest.merge(cultivated).merge(urban).merge(water);
+var polygons = forest.merge(cultivated).merge(urban).merge(water).merge(grassland);
 ```
 
 Next, we define the composite imagery, combining our 2023 Landsat 8 composite with the SRTM DEM and the NDVI.
@@ -232,7 +232,7 @@ print (trained, 'trained')
 //Classify the image
 var classified = compositeFin.select(bands).classify(trained);
  
-Map.addLayer(classified, {min: 0, max: 3, palette: ['green', 'yellow', 'white', 'blue']}, 'Classified');
+Map.addLayer(classified, {min: 0, max: 4, palette: ['green', 'black', 'white', 'blue', 'yellow']}, 'Classified');
 
 //Calculate Accuracy
 
