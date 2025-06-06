@@ -11,7 +11,7 @@ The first step is to define a region. The simplest approach is to use the tools 
 The following code will center the map over your point when the code is run.
 
 ```JavaScript
-Map.centerObject(point, 7);
+Map.centerObject(poly, 7);
 ```
 
 Now we can add the SRTM to the map.
@@ -142,7 +142,7 @@ The code in the following sections will pertain only to Landsat, but refer to th
 We can visualize any combination of bands in a similar fashion by defining a new variable with our chosen band composite. The following code will display a color infrared composite:
 
 ```JavaScript
-Map.addLayer(composite, {bands: ['B5', 'B3', 'B2'], min: 0, max: 0.15}, 'Landsat 8 false color composite');
+Map.addLayer(composite, {bands: ['B5', 'B3', 'B2'], min: 0, max: 0.3}, 'Landsat 8 false color composite');
 ```
 
 ## Band Ratios
@@ -154,7 +154,7 @@ var b5 = composite.select("B5");
 var b4 = composite.select("B4");
 var b5divb4 = b5.divide(b4).rename('B5/B4');
 
-Map.addLayer(b5divb4, {min:0, max:1, palette: ["white", "green"]} , "NDVI");
+Map.addLayer(b5divb4, {min:0, max:6, palette: ["white", "green"]} , "B5/B4");
 ```
 
 ## Calculate NDVI
